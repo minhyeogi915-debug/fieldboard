@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FIELD BOARD · 수원 블루나이츠 공수 기록</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1f3a8a;--ink:#16244a;--muted:#5d6b89;--line:#d5deee;--bg:#e8eef8;--card:#fff;--gold:#d4a64a;--soft:#f2f6fd;--chip:#f4f7fd;--ok:#15803d}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Noto Sans KR',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);-webkit-tap-highlight-color:transparent}
+button{cursor:pointer}
+header.top{background:linear-gradient(100deg,#1e3a8a,#2a48ad);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:12px 22px;gap:14px;flex-wrap:wrap;border-bottom:3px solid var(--gold)}
+.brand{display:flex;align-items:center;gap:14px}
+.brand .sep{width:1px;height:42px;background:rgba(255,255,255,.3)}
+.t1{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:27px;letter-spacing:.5px;line-height:1.1}
+.t1 small{font-family:'Noto Sans KR',sans-serif;font-weight:500;font-size:16px;opacity:.92}
+.t2{font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:2px;font-size:12.5px;opacity:.85}
+.hright{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.pill{border:1.5px solid rgba(255,255,255,.55);border-radius:999px;padding:7px 14px;font-size:13px;display:flex;gap:7px;align-items:center;white-space:nowrap}
+.dot{width:9px;height:9px;border-radius:50%;background:#fff}
+.hsel{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.55);border-radius:12px;padding:8px 10px;font:inherit;font-size:14px;max-width:230px}
+.hsel option{color:#000}
+.hbtn{background:#2f55c9;color:#fff;border:0;border-radius:10px;padding:9px 14px;font:inherit;font-weight:700;font-size:14px}
+.useg{display:flex;background:rgba(255,255,255,.14);border-radius:12px;padding:3px}
+.useg button{border:0;background:transparent;color:#fff;font:inherit;font-weight:800;padding:7px 18px;border-radius:9px;font-size:14px}
+.useg button.on{background:#fff;color:var(--navy)}
+nav.tabs{background:#f7f9fd;border-bottom:1px solid var(--line);display:flex;gap:4px;padding:10px 18px;overflow-x:auto}
+nav.tabs button{border:0;background:transparent;font:inherit;font-weight:700;font-size:15px;color:var(--ink);padding:10px 16px;border-radius:12px;white-space:nowrap}
+nav.tabs button.on{background:var(--navy);color:#fff;box-shadow:inset 0 -3px 0 var(--gold)}
+main{padding:18px 22px 120px;max-width:1500px;margin:0 auto}
+.kick{font-family:'Barlow Condensed',sans-serif;font-weight:800;letter-spacing:1.6px;color:var(--navy);font-size:14px;display:flex;align-items:center;gap:8px}
+.kick:before{content:'';width:5px;height:13px;background:var(--gold);transform:skewX(-20deg);display:inline-block}
+h1{margin:4px 0 4px;font-size:30px;font-weight:900;letter-spacing:-.5px}
+.sub{color:var(--muted);font-size:14px}
+.phead{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 2px 10px rgba(31,58,138,.05);min-width:0}
+.card h3{margin:0 0 12px;font-size:18px;font-weight:800}
+h3.bar{border-left:4px solid var(--navy);padding-left:10px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.rec{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:16px;align-items:start}
+@media(max-width:1050px){.rec{grid-template-columns:1fr}}
+@media(max-width:820px){.grid2{grid-template-columns:1fr}}
+.stack{display:flex;flex-direction:column;gap:16px;min-width:0}
+.btn{border:1.5px solid var(--line);background:#fff;color:var(--navy);font:inherit;font-weight:700;font-size:14px;padding:9px 14px;border-radius:12px;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn.pri{background:var(--navy);color:#fff;border-color:var(--navy)}
+.btn.warn{background:#fdf3dc;border-color:#e9c77a;color:#6b4a07}
+.btn.danger{color:#b91c1c;border-color:#f3c3c3}
+.btn.big{padding:14px 22px;font-size:16px}
+.btn.on{background:var(--navy);color:#fff;border-color:var(--gold);box-shadow:0 0 0 2px var(--gold) inset}
+.badge{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:700;background:var(--soft);color:var(--ink);white-space:nowrap}
+.badge.g{background:#e7f6ec;border-color:#bfe3cb;color:#166534}
+.badge.o{background:#fff4e0;border-color:#f1d29a;color:#8a5a00}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{min-width:70px;padding:13px 14px;border:1.5px solid var(--line);border-radius:14px;background:var(--chip);font:inherit;font-weight:700;font-size:16px;color:var(--ink)}
+.chip.sm{min-width:0;padding:9px 12px;font-size:14px}
+.chip.on{background:var(--navy);color:#fff;border-color:var(--gold);box-shadow:0 0 0 2px var(--gold) inset}
+.lbl{font-weight:700;font-size:14px;color:#33415f;margin:0 0 8px}
+.irow{display:flex;gap:22px;flex-wrap:wrap;align-items:flex-end}
+.step{display:flex;gap:6px;align-items:stretch}
+.step button{min-width:52px;border:1.5px solid #c9d6ef;background:#eef3fc;border-radius:14px;font:inherit;font-weight:800;font-size:18px;color:var(--navy)}
+.step input{width:96px;text-align:center;font:inherit;font-weight:900;font-size:26px;border:1.5px solid var(--line);border-radius:14px;padding:8px;color:var(--ink)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:10px}
+.tile{border:1.5px solid var(--line);border-radius:14px;padding:10px;min-height:86px;background:#fff;text-align:center;display:flex;flex-direction:column;justify-content:center;gap:3px;cursor:pointer}
+.tile.empty{border-style:dashed;color:#a9b4c9;background:#fbfcfe}
+.tile .pos{font-size:12px;font-weight:800;color:var(--muted);letter-spacing:.5px}
+.tile .nm{font-weight:800;font-size:15px}
+.tile.has{border-color:var(--gold);background:#fffaf0}
+.mini{display:inline-block;background:var(--navy);color:#fff;border-radius:6px;font-size:11px;padding:2px 6px;margin:1px}
+.note{background:#eef3fc;border-left:4px solid var(--navy);border-radius:10px;padding:12px 14px;font-size:14px;color:#33415f;line-height:1.5}
+.note.warn{background:#fff6e6;border-color:var(--gold)}
+.note.bad{background:#fdecec;border-color:#dc2626}
+.note.good{background:#e9f7ee;border-color:#16a34a}
+details summary{cursor:pointer;font-weight:800;padding:12px 0}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:10px;border-bottom:1px solid #e6ecf6;text-align:left;white-space:nowrap}
+th{background:#f4f7fd;font-weight:800}
+.tbl{border:1px solid var(--line);border-radius:14px;overflow:auto}
+.stat{background:#f5f8fe;border:1px solid var(--line);border-radius:18px;padding:16px 18px}
+.stat .k{color:var(--muted);font-size:14px}
+.stat .v{font-size:34px;font-weight:900;color:var(--navy);margin-top:6px}
+.stats4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:16px}
+@media(max-width:820px){.stats4{grid-template-columns:repeat(2,1fr)}}
+.fbar{position:fixed;right:20px;bottom:20px;background:var(--navy);color:#fff;border-radius:20px;padding:10px 10px 10px 22px;display:flex;align-items:center;gap:16px;box-shadow:0 10px 30px rgba(15,30,80,.35);border:2px solid var(--gold);z-index:30}
+.fbar button{background:#2b4bb0;border:2px solid rgba(255,255,255,.35);color:#fff;font:inherit;font-weight:900;font-size:19px;padding:12px 22px;border-radius:14px}
+svg.field{width:100%;height:auto;border-radius:16px;display:block;touch-action:none;user-select:none;-webkit-user-select:none}
+.toolbar{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
+.tb{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+input.txt,select.txt,textarea.txt{width:100%;font:inherit;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;font-size:16px;background:#fff;color:var(--ink);min-width:0}
+.preg{display:grid;grid-template-columns:90px minmax(0,1fr) 170px;gap:8px}
+@media(max-width:640px){.preg{grid-template-columns:80px minmax(0,1fr)}.preg .pp{grid-column:1/-1}}
+.plist{display:grid;gap:8px}
+.prow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;border:1px solid var(--line);border-radius:14px;padding:10px 12px;background:#fff}
+.prow .pn{flex:1;min-width:140px}
+.prow .pn b{font-size:16px}
+select.txt.inl{width:auto}
+textarea.txt{min-height:90px;resize:vertical}
+.form{display:grid;gap:12px}
+.form label{font-size:13px;font-weight:700;color:#33415f;display:grid;gap:6px}
+label.ck{display:flex!important;gap:10px;align-items:center;font-size:15px!important}
+label.ck input{width:20px;height:20px}
+.mback{position:fixed;inset:0;background:rgba(10,20,50,.45);display:flex;align-items:center;justify-content:center;z-index:50;padding:16px}
+.modal{background:#fff;border-radius:22px;max-width:560px;width:100%;max-height:88vh;overflow:auto;padding:22px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.modal.wide{max-width:820px}
+.modal h2{margin:0 0 14px;font-size:20px}
+.mact{display:flex;justify-content:flex-end;gap:8px;margin-top:18px;flex-wrap:wrap}
+#toast{position:fixed;left:50%;bottom:110px;transform:translateX(-50%);background:#16244a;color:#fff;padding:12px 18px;border-radius:12px;font-weight:700;opacity:0;transition:.25s;pointer-events:none;z-index:60;max-width:90vw;text-align:center}
+#toast.show{opacity:1}
+.bench{display:flex;flex-wrap:wrap;gap:8px}
+.hist{font-size:13px;color:#33415f;display:grid;gap:6px;max-height:240px;overflow:auto}
+.hist div{background:#f5f8fe;border-radius:10px;padding:8px 10px}
+.muted{color:var(--muted)}
+.sm{font-size:13px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.pickgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.pk{border:1.5px solid var(--line);border-radius:12px;padding:10px;background:#fff;font:inherit;text-align:left;color:var(--ink)}
+.pk.match{border-color:var(--navy);background:#eef3fc}
+.pk b{display:block}
+.good{color:var(--ok)} .bad{color:#b91c1c}
+.sitbig{font-size:26px;font-weight:900}
+.sitbig span{color:var(--muted);font-weight:500}
+.livebox{display:grid;gap:8px}
+hr.d{border:0;border-top:1px solid var(--line);margin:18px 0}
+</style>
+</head>
+<body>
+<header class="top" id="hdr"></header>
+<nav class="tabs" id="tabs"></nav>
+<main id="view"></main>
+<div id="fbar"></div>
+<div id="modalRoot"></div>
+<div id="toast"></div>
+<script>
+/* ================= 기본 유틸 ================= */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const uid=()=>Math.random().toString(36).slice(2,9)+Date.now().toString(36).slice(-4);
+const clone=o=>JSON.parse(JSON.stringify(o));
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const f1=x=>x==null||isNaN(x)?'—':(Math.round(x*10)/10).toFixed(1);
+const pct=(a,b)=>b?Math.round(a/b*100)+'%':'—';
+const today=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+const hm=ts=>{const d=new Date(ts);return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')};
+
+/* ================= 설정 ================= */
+const UNITS={
+ D:{name:'수비',en:'DEFENSE',yardLbl:'허용 야드 · 음수 가능',dirLbl:'상대 공격 방향 (수비 시점)',avgLbl:'평균 허용',
+  passLbl:'상대 패스 결과',coverLbl:'커버리지',
+  stats:['태클','어시스트','TFL','색','QB 압박','PBU','INT','FF','FR','TD','미스 태클','커버 실수','페널티'],
+  ends:['펀트 유도','인터셉션','펌블 리커버','다운 턴오버','터치다운 허용','필드골 허용','필드골 실패 유도','세이프티','전반/경기 종료','기타'],
+  covers:['Cover 0','Cover 1','Cover 2','Cover 3','Cover 4','Cover 6','2-Man','기타'],defForm:'43over',defCover:'Cover 3'},
+ O:{name:'공격',en:'OFFENSE',yardLbl:'전진 야드 · 음수 가능',dirLbl:'공격 방향 (공격 시점)',avgLbl:'평균 전진',
+  passLbl:'패스 결과',coverLbl:'공격 컨셉',
+  stats:['캐리','타겟','캐치','드롭','TD','퍼스트다운','펌블 로스트','블록 실패','색 허용','페널티'],
+  ends:['터치다운','필드골 성공','필드골 실패','펀트','인터셉션','펌블 로스트','다운 턴오버','세이프티','전반/경기 종료','기타'],
+  covers:['런 위주','패스 위주','RPO','플레이액션','스크린','옵션','2분 공격','기타'],defForm:'gun22',defCover:'RPO'}
+};
+const OL=[[76,28],[88,28],[100,28],[112,28],[124,28]], OLL=['LT','LG','C','RG','RT'];
+const FORMS={
+ D:{
+  '43over':{name:'4-3 Over',L:['DE','DT','DT','DE','WILL','MIKE','SAM','CB','SS','FS','CB'],P:[[44,92],[84,93],[110,93],[142,92],[74,70],[100,70],[126,70],[30,44],[154,55],[100,22],[172,44]]},
+  '43under':{name:'4-3 Under',L:['DE','DT','DT','DE','WILL','MIKE','SAM','CB','SS','FS','CB'],P:[[48,92],[80,93],[112,93],[140,92],[70,70],[102,70],[162,90],[28,44],[146,55],[100,22],[174,44]]},
+  '34':{name:'3-4',L:['DE','NT','DE','OLB','ILB','ILB','OLB','CB','SS','FS','CB'],P:[[64,93],[100,93],[136,93],[32,88],[84,70],[116,70],[168,88],[22,44],[150,55],[100,22],[178,44]]},
+  '425':{name:'Nickel 4-2-5',L:['DE','DT','DT','DE','WILL','MIKE','NB','CB','SS','FS','CB'],P:[[48,92],[86,93],[114,93],[152,92],[84,70],[116,70],[156,62],[24,44],[128,38],[76,22],[176,44]]},
+  '335':{name:'3-3-5 Stack',L:['DE','NT','DE','WILL','MIKE','SAM','NB','CB','SS','FS','CB'],P:[[64,93],[100,93],[136,93],[64,72],[100,72],[136,72],[162,62],[22,44],[146,38],[60,26],[178,44]]}
+ },
+ O:{
+  'gun22':{name:'Shotgun 2x2',L:[...OLL,'QB','RB','X','SL','SL','Z'],P:[...OL,[100,58],[116,60],[14,24],[44,32],[156,32],[186,24]]},
+  'gun31':{name:'Shotgun Trips',L:[...OLL,'QB','RB','X','SL','SL','Z'],P:[...OL,[100,58],[84,60],[14,24],[146,32],[166,42],[186,24]]},
+  'iform':{name:'I-Form',L:[...OLL,'QB','FB','RB','TE','X','Z'],P:[...OL,[100,42],[100,64],[100,86],[138,30],[14,24],[176,32]]},
+  'single':{name:'Singleback',L:[...OLL,'QB','RB','TE','X','SL','Z'],P:[...OL,[100,42],[100,72],[138,30],[14,24],[160,32],[186,24]]},
+  'pistol':{name:'Pistol',L:[...OLL,'QB','RB','TE','X','SL','Z'],P:[...OL,[100,52],[100,78],[138,30],[14,24],[40,32],[186,24]]}
+ }
+};
+const ALIAS={DL:['DE','DT','NT'],DT:['DT','NT'],LB:['WILL','MIKE','SAM','OLB','ILB'],OLB:['OLB','WILL','SAM'],ILB:['ILB','MIKE','WILL'],
+ S:['SS','FS'],DB:['CB','SS','FS','NB'],CB:['CB','NB'],NB:['NB'],OL:['LT','LG','C','RG','RT'],OT:['LT','RT'],T:['LT','RT'],OG:['LG','RG'],G:['LG','RG'],
+ WR:['X','Z','SL'],SLOT:['SL'],HB:['RB'],TB:['RB'],RB:['RB','FB']};
+function posMatch(label,posStr){
+ const toks=String(posStr||'').toUpperCase().split(/[\/,\s·]+/).filter(Boolean);
+ return toks.some(t=>t===label||(ALIAS[t]||[]).includes(label))?1:0;
+}
+
+/* ================= 저장소 ================= */
+const KEY='suwon-bk-fieldboard-v1';
+let storeOK=true;
+function load(){try{localStorage.setItem(KEY+'-t','1');localStorage.removeItem(KEY+'-t');const t=localStorage.getItem(KEY);return t?JSON.parse(t):null}catch(e){storeOK=false;return null}}
+let DB=load()||{v:1,players:[],sessions:[],currentId:null,lastBackup:null};
+let saveT;
+function save(){if(UI.viewer)return;clearTimeout(saveT);saveT=setTimeout(()=>{try{localStorage.setItem(KEY,JSON.stringify(DB));storeOK=true}catch(e){storeOK=false}updatePill()},120);schedulePush()}
+function updatePill(){const p=$('#pill');if(!p)return;
+ if(UI.viewer)p.innerHTML=SYNC.err?`<span class=dot style="background:#f87171"></span>연결 확인 필요`:`<span class=dot style="background:#4ade80"></span>실시간 보기${SYNC.shared.updated?' · '+hms(SYNC.shared.updated):''}`;
+ else if(SYNC.on&&SYNC.db)p.innerHTML=SYNC.err?`<span class=dot style="background:#f87171"></span>공유 오류`:`<span class=dot style="background:#4ade80"></span>실시간 공유 중${SYNC.lastPush?' · '+hms(SYNC.lastPush):''}`;
+ else p.innerHTML=storeOK?'<span class=dot></span>기기 내부 저장':'<span class=dot style="background:#f87171"></span>임시 저장 · 백업 필수';
+ const st=$('#syncStatus');if(st&&UI.tab==='settings')st.innerHTML=syncStatusHTML();
+}
+const hms=ts=>{const d=new Date(ts);return [d.getHours(),d.getMinutes(),d.getSeconds()].map(x=>String(x).padStart(2,'0')).join(':')};
+
+/* ================= 실시간 공유 (서버비 없이 claude.ai 아티팩트 저장소 사용) ================= */
+const SYNC={db:null,user:null,canWrite:null,connected:false,on:false,shared:{players:[],sessions:{},live:null,updated:null},hashes:{},busy:false,again:false,err:'',lastPush:0};
+try{SYNC.on=localStorage.getItem(KEY+'-share')==='on'}catch(e){}
+let LOCAL=null;
+function initSync(n=0){
+ if(!(window.claude&&typeof window.claude.use==='function')){if(n<25)setTimeout(()=>initSync(n+1),300);return}
+ Promise.all([window.claude.use('db'),window.claude.use('user')]).then(async([db,user])=>{
+  SYNC.user=user;if(!db){refreshSyncUI();return}
+  SYNC.db=db;
+  try{SYNC.canWrite=user?await user.can('data.write'):null}catch(e){SYNC.canWrite=null}
+  const t=setTimeout(()=>{if(!SYNC.connected){SYNC.err='공유 저장소에 아직 연결되지 않았어요 (네트워크 확인)';refreshSyncUI()}},10000);
+  const ok=()=>{if(!SYNC.connected){SYNC.connected=true;clearTimeout(t);if(SYNC.err.startsWith('공유 저장소'))SYNC.err=''}};
+  db.collection('sessions').onSnapshot(snap=>{const m={};snap.docs.forEach(d=>{const x=d.data();if(x&&typeof x.json==='string'){try{m[d.id]=JSON.parse(x.json)}catch(e){}}});SYNC.shared.sessions=m;SYNC.shared.updated=Date.now();if(!snap.metadata.fromCache)ok();onShared()},e=>{clearTimeout(t);SYNC.err='공유 연결 오류 ('+(e&&e.code)+')';refreshSyncUI()});
+  db.doc('meta/roster').onSnapshot(s=>{let pl=[];if(s.exists){try{pl=JSON.parse(s.data().json)}catch(e){}}SYNC.shared.players=Array.isArray(pl)?pl:[];onShared()},()=>{});
+  db.doc('meta/live').onSnapshot(s=>{SYNC.shared.live=s.exists?s.data():null;onShared()},()=>{});
+  if(SYNC.on)schedulePush();
+  refreshSyncUI();
+ }).catch(()=>{});
+}
+function refreshSyncUI(){renderHeader();if(UI.tab==='settings'&&!$('#modalRoot').innerHTML)renderView()}
+function onShared(){
+ if(UI.viewer){buildViewerDB();if($('#modalRoot').innerHTML)renderHeader();else render()}
+ else updatePill();
+}
+function buildViewerDB(){
+ const sh=SYNC.shared;const sessions=Object.values(sh.sessions).sort((a,b)=>(a.created||0)-(b.created||0));
+ let cid=DB&&DB.currentId;
+ if(UI.followLive&&sh.live&&sh.live.sid&&sessions.find(s=>s.id===sh.live.sid))cid=sh.live.sid;
+ if(!sessions.find(s=>s.id===cid))cid=sessions.length?sessions[sessions.length-1].id:null;
+ DB={v:1,players:sh.players.slice(),sessions,currentId:cid,lastBackup:null};
+}
+let pushT;
+function schedulePush(){if(!SYNC.on||!SYNC.db||UI.viewer)return;clearTimeout(pushT);pushT=setTimeout(()=>pushNow(false),1000)}
+async function pushNow(all){
+ if(!SYNC.db||UI.viewer)return;
+ if(SYNC.busy){SYNC.again=true;return}SYNC.busy=true;let err='';
+ try{
+  const db=SYNC.db;
+  const rj=JSON.stringify(DB.players);if(SYNC.hashes.roster!==rj){await db.doc('meta/roster').set({json:rj,updated:Date.now()});SYNC.hashes.roster=rj}
+  const list=all?DB.sessions.slice():[cur()].filter(Boolean);
+  for(const s of list){const j=JSON.stringify(s);if(SYNC.hashes['s_'+s.id]===j)continue;
+   if(j.length>240000){err=`"${s.name}" 기록이 너무 커서(${Math.round(j.length/1024)}KB) 공유하지 못했어요. 작전판 필기를 지우거나 기록을 나눠 주세요.`;continue}
+   await db.doc('sessions/'+s.id).set({json:j,name:s.name,date:s.date,updated:Date.now()});SYNC.hashes['s_'+s.id]=j}
+  const c=cur();if(c&&SYNC.hashes.live!==c.id){await db.doc('meta/live').set({sid:c.id,updated:Date.now()});SYNC.hashes.live=c.id}
+  SYNC.lastPush=Date.now();
+ }catch(e){const code=e&&e.code;
+  err=code==='invalid_argument'?'이 계정은 공유 기록을 쓸 권한이 없어요 (보기 전용). 소유자나 편집자만 기록을 올릴 수 있어요.':code==='quota_exceeded'?'공유 저장 공간이 가득 찼어요. 오래된 공유 기록을 지워 주세요.':'업로드 실패 — 잠시 후 자동으로 다시 시도합니다';
+  if(code!=='invalid_argument'&&code!=='quota_exceeded'){SYNC.hashes={};setTimeout(schedulePush,5000)}}
+ SYNC.err=err;SYNC.busy=false;updatePill();
+ if(SYNC.again){SYNC.again=false;pushNow(false)}
+}
+function syncStatusHTML(){
+ if(!SYNC.db)return `<div class="note warn">이 화면에서는 실시간 공유를 쓸 수 없어요. claude.ai에 로그인한 상태로 이 페이지를 열어 주세요.</div>`;
+ const parts=[];
+ if(UI.viewer)parts.push(`<div class="note good">지금 <b>실시간 보기</b> 중 · 마지막 수신 ${SYNC.shared.updated?hms(SYNC.shared.updated):'—'} · 공유된 기록 ${Object.keys(SYNC.shared.sessions).length}개</div>`);
+ else if(SYNC.on)parts.push(`<div class="note good">이 기기가 <b>기록 기기</b>로 공유 중 · 마지막 업로드 ${SYNC.lastPush?hms(SYNC.lastPush):'아직 없음'}</div>`);
+ else parts.push(`<div class=note>실시간 공유 꺼짐 · 공유 저장소에 기록 ${Object.keys(SYNC.shared.sessions).length}개</div>`);
+ if(SYNC.err)parts.push(`<div class="note bad">${esc(SYNC.err)}</div>`);
+ return parts.join('');
+}
+initSync();
+
+/* ================= 상태 ================= */
+const freshForm=()=>({play:'미확인',dir:'미확인',yards:0,passRes:null,pen:{on:false,side:'수비팀',yds:5,auto:false},noPlay:false,review:false,ovr:{on:false,down:1,dist:10}});
+const UI={viewer:false,followLive:true,tab:'home',unit:'D',pending:{},form:freshForm(),detOpen:false,showAllLog:false,endSel:null,
+ board:{mode:'swap',draft:null,undo:[],sid:null,unit:null}};
+const cur=()=>DB.sessions.find(s=>s.id===DB.currentId)||null;
+const P=id=>id?DB.players.find(p=>p.id===id):null;
+const pname=id=>{const p=P(id);return p?(p.num?'#'+p.num+' ':'')+p.name:'빈 자리'};
+const rosterPlayers=s=>{const r=DB.players.filter(p=>s&&s.roster.includes(p.id));return r.length?r:DB.players.slice()};
+const numSort=(a,b)=>(parseInt(a.num)||999)-(parseInt(b.num)||999);
+function newUnit(k){const U=UNITS[k];return{formation:U.defForm,coverage:U.defCover,strong:'R',slots:clone(FORMS[k][U.defForm].P),lineup:Array(11).fill(null),strokes:[],memo:'',note:'',starting:null,history:[],sit:{q:'1Q',down:1,dist:10,ytg:null},driveNo:1}}
+const pickBoard=u=>clone({formation:u.formation,coverage:u.coverage,strong:u.strong,slots:u.slots,lineup:u.lineup,strokes:u.strokes});
+const defaultSlots=(k,f,strong)=>FORMS[k][f].P.map(([x,y])=>[strong==='L'?200-x:x,y]);
+const formLabel=(u,k)=>`${FORMS[k][u.formation].name} / ${u.coverage}`;
+function autoFill(st,k,players){
+ const L=FORMS[k][st.formation].L;
+ L.forEach((lab,i)=>{if(st.lineup[i])return;const p=players.slice().sort(numSort).find(p=>posMatch(lab,p.pos)&&!st.lineup.includes(p.id));if(p)st.lineup[i]=p.id});
+}
+function sitText(sit){const g=sit.ytg!=null&&sit.down===1&&sit.ytg<=sit.dist;return `${sit.down} & ${g?'Goal':sit.dist}`}
+function ballText(ytg,k){if(ytg==null)return'미확인';if(ytg===50)return'50야드 라인';
+ if(k==='D')return ytg<50?`우리 ${ytg}`:`상대 ${100-ytg}`;return ytg<50?`상대 ${ytg}`:`우리 ${100-ytg}`}
+
+/* ================= 다운로드(권한 있을 때) ================= */
+let DL=null;
+function initDL(n=0){if(window.claude&&typeof window.claude.use==='function'){window.claude.use('downloads').then(d=>{DL=d}).catch(()=>{})}else if(n<25)setTimeout(()=>initDL(n+1),300)}
+initDL();
+const IN_CLAUDE=!!(window.claude||/claude\.ai|claudeusercontent|anthropic/.test(location.hostname));
+function exportFile(name,text,onDone){
+ if(!IN_CLAUDE){try{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:name.endsWith('.csv')?'text/csv':'application/json'}));a.download=name;document.body.appendChild(a);a.click();a.remove();toast('파일을 저장했습니다');onDone&&onDone();return}catch(e){}}
+ if(DL){DL.save({filename:name,data:text}).then(()=>{toast('파일 저장 완료');onDone&&onDone()}).catch(e=>{if(e&&e.code==='declined')return;textModal(name,text,onDone)})}
+ else textModal(name,text,onDone);
+}
+function copyText(text,okMsg){
+ try{navigator.clipboard.writeText(text).then(()=>toast(okMsg||'복사했습니다')).catch(()=>textModal('복사할 내용',text))}catch(e){textModal('복사할 내용',text)}
+}
+function textModal(title,text,onDone){
+ openModal({title:esc(title),wide:true,body:`<p class="sm muted">아래 내용을 전체 선택해 복사한 뒤 메모장/파일로 저장하세요.</p><textarea class=txt id=tmTxt style="min-height:300px;font-family:monospace;font-size:12px" readonly>${esc(text)}</textarea>`,
+  actions:[{label:'닫기'},{label:'복사',cls:'pri',fn:()=>{const t=$('#tmTxt');t.select();try{navigator.clipboard.writeText(text).then(()=>toast('복사했습니다'))}catch(e){document.execCommand&&document.execCommand('copy')}onDone&&onDone();return false}}]});
+}
+
+/* ================= 모달 / 토스트 ================= */
+let modalActs=[],modalClose=null;
+function openModal({title,body,actions=[{label:'닫기'}],wide=false,onClose}){
+ modalActs=actions;modalClose=onClose||null;
+ $('#modalRoot').innerHTML=`<div class=mback><div class="modal ${wide?'wide':''}"><h2>${title}</h2><div id=mbody>${body}</div><div class=mact>${actions.map((a,i)=>`<button class="btn ${a.cls||''}" data-mi=${i}>${a.label}</button>`).join('')}</div></div></div>`;
+}
+function closeModal(){$('#modalRoot').innerHTML='';const c=modalClose;modalClose=null;c&&c()}
+$('#modalRoot').addEventListener('click',e=>{
+ if(e.target.classList.contains('mback')){closeModal();return}
+ const b=e.target.closest('[data-mi]');if(b){const a=modalActs[+b.dataset.mi];if(!a.fn||a.fn()!==false)closeModal()}
+});
+function confirmBox(msg,onYes,danger){openModal({title:'확인',body:`<p style="line-height:1.6">${msg}</p>`,actions:[{label:'취소'},{label:'확인',cls:danger?'danger':'pri',fn:()=>{setTimeout(onYes,0)}}]})}
+let toastT;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),2200)}
+
+/* ================= 렌더 ================= */
+const LOGO=`<img src="data:image/png;base64,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" alt="수원 블루나이츠" style="height:58px;width:auto;display:block">`;
+const LOGO_B=`<img src="data:image/png;base64,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" alt="" style="height:96px;width:auto;display:block">`;
+function renderHeader(){
+ const U=UNITS[UI.unit];
+ const opts=DB.sessions.slice().reverse().map(x=>`<option value="${x.id}" ${x.id===DB.currentId?'selected':''}>${esc(x.type)} · ${esc(x.name)}</option>`).join('');
+ $('#hdr').innerHTML=`<div class=brand>${LOGO}<div class=sep></div><div><div class=t1>${U.en} BOARD <small>/ ${U.name} 기록</small></div><div class=t2>SUWON BLUEKNIGHTS · OFFLINE COACHING</div></div></div>
+ <div class=hright><div class=useg>${['D','O'].map(k=>`<button data-act=unit data-v=${k} class="${UI.unit===k?'on':''}">${UNITS[k].name}</button>`).join('')}</div>
+ <span class=pill id=pill></span>${DB.sessions.length?`<select class=hsel data-chg=sess>${opts}</select>`:''}${SYNC.db?(UI.viewer?`<button class=hbtn data-act=viewerOff>내 기기 기록으로</button>`:`<button class=hbtn style="background:transparent;border:1.5px solid rgba(255,255,255,.55)" data-act=viewerOn>📡 실시간 보기</button>`):''}${UI.viewer?'':`<button class=hbtn data-act=newSession>+ 새 기록</button>`}</div>`;
+ updatePill();
+}
+function renderTabs(){
+ const T=[['home','홈'],['record',(UI.viewer?'📡 ':'✍ ')+UNITS[UI.unit].name+(UI.viewer?' 실시간':' 기록')],['board','⬡ 작전판'],['analysis','▥ 분석'],['players','♟ 선수 관리'],['settings','⚙ 설정·백업']];
+ $('#tabs').innerHTML=T.map(([k,l])=>`<button data-act=tab data-v=${k} class="${UI.tab===k?'on':''}">${l}</button>`).join('');
+}
+function renderView(){
+ const V={home:vHome,record:vRecord,board:vBoard,analysis:vAnalysis,players:vPlayers,settings:vSettings}[UI.tab];
+ $('#view').innerHTML=V();
+ if(UI.tab==='board')bindBoard();
+ renderFbar();
+}
+function renderFbar(){
+ const s=cur();
+ if(UI.tab!=='record'||!s||UI.viewer){$('#fbar').innerHTML='';return}
+ const u=s.units[UI.unit];const n=s.snaps.filter(x=>x.unit===UI.unit&&x.driveNo===u.driveNo).length;
+ $('#fbar').innerHTML=`<div class=fbar><span>${UNITS[UI.unit].name} 진행 중 · <b>${n+1}번째 스냅</b></span><button data-act=saveSnap>스냅 저장 ✓</button></div>`;
+}
+function render(){renderHeader();renderTabs();renderView()}
+function noSession(){return `<div class=card style="max-width:620px"><h3 class=bar>진행 중인 기록이 없어요</h3><p class=muted>새 경기나 훈련을 만들면 ${UNITS[UI.unit].name} 기록을 시작할 수 있어요.</p><button class="btn pri big" data-act=newSession>+ 새 경기 / 훈련 시작</button></div>`}
+
+/* ---------- 홈 ---------- */
+function vHome(){
+ const s=cur();let c;
+ if(!s)c=`<div class=kick>CURRENT SESSION</div><h3 class=bar style="margin-top:10px">기록이 아직 없어요</h3><p class=muted>선수를 등록하고 첫 경기나 훈련을 시작해 보세요.</p><button class="btn pri big" data-act=newSession>+ 새 경기 / 훈련 시작</button>`;
+ else c=`<div class=kick>CURRENT SESSION</div><h3 class=bar style="margin-top:10px">${esc(s.name)}</h3><div class=sub>${esc(s.type)} · ${esc(s.date)}${s.opp?' · vs '+esc(s.opp):''}${s.finished?' · 종료됨':''}</div>
+  <div class=grid2 style="margin-top:14px">${['D','O'].map(k=>{const u=s.units[k];return `<div class=stat><div class=k>${UNITS[k].name} · 드라이브 #${u.driveNo}</div><div class=v style="font-size:26px">${sitText(u.sit)}</div><div class="sm muted">${s.snaps.filter(x=>x.unit===k).length}스냅 · 볼 ${ballText(u.sit.ytg,k)}</div><button class="btn pri" style="margin-top:10px" data-act=resume data-v=${k}>${UNITS[k].name} 기록 이어가기</button></div>`}).join('')}</div>`;
+ const recent=DB.sessions.slice().reverse().slice(0,8);
+ return `<div class=phead><div><div class=kick>SIDE LINE CONTROL</div><h1>수비도, 공격도. 제대로.</h1><div class=sub>기록하고 · 배치를 바꾸고 · 숫자로 판단하세요.</div></div>${LOGO_B}</div>
+ ${SYNC.db&&!UI.viewer&&!SYNC.on?`<div class=note style="margin-bottom:16px">📡 코치진과 실시간으로 보려면: 기록하는 기기에서 <b>설정·백업 → 실시간 공유 켜기</b>, 보는 사람은 상단 <b>실시간 보기</b>.</div>`:''}
+ <div class=grid2><div class=card>${c}</div>
+ <div class=card><div class=kick>QUICK START</div><h3 class=bar style="margin-top:10px">시작하기</h3><div class=form>
+  <button class="btn big" data-act=tab data-v=players style="justify-content:center">① 선수 명단 등록 <span class="sm muted">(${DB.players.length}명)</span></button>
+  <button class="btn big" data-act=newSession style="justify-content:center">② 경기 / 훈련 생성</button>
+  <button class="btn big" data-act=tab data-v=analysis style="justify-content:center">③ 통계 / AI 코칭 자료</button></div>
+  <p class="sm muted" style="margin-top:12px">계정과 서버 없이 이 기기에만 저장됩니다. 중요한 기록은 설정·백업에서 JSON으로 백업해 주세요.${DB.lastBackup?` 마지막 백업: ${new Date(DB.lastBackup).toLocaleString('ko-KR')}`:' 아직 백업한 적 없음.'}</p></div></div>
+ ${recent.length?`<div class=card style="margin-top:16px"><h3>최근 기록</h3><div class=tbl><table><tr><th>유형</th><th>이름</th><th>날짜</th><th>상대</th><th>수비 스냅</th><th>공격 스냅</th><th></th></tr>${recent.map(x=>`<tr><td>${esc(x.type)}</td><td><b>${esc(x.name)}</b>${x.finished?' <span class="badge">종료</span>':''}</td><td>${esc(x.date)}</td><td>${esc(x.opp||'—')}</td><td>${x.snaps.filter(a=>a.unit==='D').length}</td><td>${x.snaps.filter(a=>a.unit==='O').length}</td><td><button class=btn data-act=openSess data-id=${x.id}>${x.id===DB.currentId?'현재 기록':'열기'}</button></td></tr>`).join('')}</table></div></div>`:''}`;
+}
+
+/* ---------- 기록 ---------- */
+function vRecord(){
+ if(UI.viewer)return vLive();
+ const s=cur();if(!s)return noSession();
+ const k=UI.unit,U=UNITS[k],u=s.units[k],f=UI.form,F=FORMS[k][u.formation];
+ const unitSnaps=s.snaps.filter(x=>x.unit===k);
+ const dsn=unitSnaps.filter(x=>x.driveNo===u.driveNo);
+ const pendN=Object.values(UI.pending).reduce((t,a)=>t+a.length,0);
+ const ch=(act,v,on,cls='')=>`<button class="chip ${cls} ${on?'on':''}" data-act=${act} data-v="${v}">${v}</button>`;
+ const tiles=u.lineup.map((pid,i)=>{const p=P(pid);
+  if(!p)return `<div class="tile empty" data-act=tileEmpty data-i=${i}><div>빈 자리</div><div class=pos>${F.L[i]}</div></div>`;
+  const pend=UI.pending[pid]||[];
+  return `<div class="tile ${pend.length?'has':''}" data-act=tile data-pid=${pid} data-i=${i}><div class=pos>${F.L[i]}</div><div class=nm>${p.num?'#'+esc(p.num)+' ':''}${esc(p.name)}</div><div>${pend.map(x=>`<span class=mini>${esc(x)}</span>`).join('')}</div></div>`}).join('');
+ const sideLbl=side=>k==='D'?(side==='공격팀'?'상대(공격) 반칙':'우리(수비) 반칙'):(side==='공격팀'?'우리(공격) 반칙':'상대(수비) 반칙');
+ const pen=f.pen;
+ const det=`<details id=det ${UI.detOpen?'open':''}><summary>⚑ 페널티 · 노플레이 · 다음 다운 수동 보정</summary><div class=form style="padding-bottom:6px">
+  <label class=ck><input type=checkbox data-chg=penOn ${pen.on?'checked':''}> 페널티 있음</label>
+  ${pen.on?`<div class=chips>${['공격팀','수비팀'].map(sd=>`<button class="chip sm ${pen.side===sd?'on':''}" data-act=penSide data-v=${sd}>${sideLbl(sd)}</button>`).join('')}</div>
+   <div class=row><span class="lbl" style="margin:0">페널티 야드</span>${[5,10,15].map(y=>`<button class="chip sm ${+pen.yds===y?'on':''}" data-act=penYds data-v=${y}>${y}</button>`).join('')}<input class=txt style="width:90px" type=number inputmode=numeric data-inp=penYds value="${pen.yds}"></div>
+   <label class=ck><input type=checkbox data-chg=penAuto ${pen.auto?'checked':''}> 자동 퍼스트다운</label>`:''}
+  <label class=ck><input type=checkbox data-chg=noPlay ${f.noPlay?'checked':''}> 노플레이 (플레이 무효 · 야드/평균 미반영 · 다운 유지)</label>
+  <label class=ck><input type=checkbox data-chg=ovrOn ${f.ovr.on?'checked':''}> 다음 다운 직접 지정</label>
+  ${f.ovr.on?`<div class=row>${[1,2,3,4].map(d=>`<button class="chip sm ${+f.ovr.down===d?'on':''}" data-act=ovrDown data-v=${d}>${d}다운</button>`).join('')}<span class=lbl style="margin:0">남은 거리</span><input class=txt style="width:90px" type=number inputmode=numeric data-inp=ovrDist value="${f.ovr.dist}"></div>`:''}
+ </div></details>`;
+ const log=unitSnaps.slice().reverse();const logRows=snapRows(unitSnaps,UI.showAllLog?999:10,true);
+ return `<div class=phead><div><div class=kick>LIVE ${U.en} RECORD</div><h1>${esc(s.name)}</h1><div class=sub>${esc(s.date)} · ${U.name} 드라이브 · 다운/거리 자동 계산 · ${unitSnaps.length}스냅 기록됨</div></div>
+  <div class=tb><span class="badge g">${esc(s.type)}</span><span class=badge>드라이브 #${u.driveNo} · ${dsn.length}스냅</span><button class="btn warn" data-act=endDrive>■ ${U.name} 종료</button><button class=btn data-act=endSession>${s.finished?'↺ 세션 재개':'□ 세션 종료'}</button></div></div>
+ <div class=rec><div class=stack>
+  <div class=card><div class=toolbar><div><div class=kick>CURRENT SITUATION</div><div class=sitbig style="margin-top:6px">${sitText(u.sit)} <span>· ${ballText(u.sit.ytg,k)}</span></div></div>
+   <div class=tb><select class="txt inl" data-chg=quarter>${['1Q','2Q','3Q','4Q','OT'].map(q=>`<option ${u.sit.q===q?'selected':''}>${q}</option>`).join('')}</select><button class=btn data-act=editSit>다운·위치 수정</button></div></div></div>
+  <div class=card><div class=toolbar style="margin-bottom:14px"><h3 style="margin:0">이번 ${U.name} 스냅 입력</h3><span class=badge>#${u.driveNo} · ${U.name} 진행 중</span></div>
+   <div class=irow>
+    <div><div class=lbl>플레이 종류</div><div class=chips>${['런','패스','기타','미확인'].map(v=>ch('play',v,f.play===v)).join('')}</div></div>
+    <div><div class=lbl>${U.dirLbl}</div><div class=chips>${['왼쪽','중앙','오른쪽','미확인'].map(v=>ch('dir',v,f.dir===v)).join('')}</div></div>
+    <div><div class=lbl>${U.yardLbl}</div><div class=step><button data-act=yd data-v=-5>-5</button><button data-act=yd data-v=-1>−</button><input type=number inputmode=numeric data-inp=yards value="${f.yards}"><button data-act=yd data-v=1>+</button><button data-act=yd data-v=5>+5</button></div></div>
+   </div>
+   ${f.play==='패스'?`<div style="margin-top:16px"><div class=lbl>${U.passLbl}</div><div class=chips>${['성공','실패','색','INT'].map(v=>ch('passRes',v,f.passRes===v)).join('')}</div></div>`:''}
+   <hr class=d>
+   <div class=toolbar style="margin-bottom:10px"><div><div style="font-weight:800;font-size:17px">출전 선수 터치 → 상세 스탯 선택</div><div class="sm muted">스탯은 임시 반영되며 스냅 저장 한 번으로 확정됩니다.</div></div><span class=badge>${pendN}개 항목</span></div>
+   <div class=tiles>${tiles}</div>
+   <div class=note style="margin-top:12px">선수 기록을 놓쳤다면 그냥 플레이만 저장해도 됩니다. 기록 누락을 '기여 0회'로 판단하지 않아요.</div>
+   <hr class=d style="margin:12px 0 0">${det}
+   <label class=ck style="margin-top:6px"><input type=checkbox data-chg=review ${f.review?'checked':''}> 경기 후 확인 필요 / 미확인 스냅</label>
+  </div>
+  <div class=card><div class=toolbar style="margin-bottom:10px"><h3 style="margin:0">스냅 기록</h3><div class=tb>${unitSnaps.length?`<button class=btn data-act=undoLast>↶ 마지막 스냅 취소</button>`:''}${log.length>10?`<button class=btn data-act=toggleLog>${UI.showAllLog?'최근 10개만':'전체 보기 ('+log.length+')'}</button>`:''}</div></div>
+   ${unitSnaps.length?`<div class=tbl><table><tr><th>#</th><th>드라이브</th><th>쿼터</th><th>상황</th><th>플레이</th><th>방향</th><th>야드</th><th>비고</th><th></th></tr>${logRows}</table></div>`:`<p class="muted sm">아직 기록된 ${U.name} 스냅이 없습니다.</p>`}</div>
+ </div>
+ <div class=stack>
+  <div class=card><div class=toolbar style="margin-bottom:10px"><h3 style="margin:0">${U.name} 전술판</h3><button class=btn data-act=tab data-v=board>⤢ 확대</button></div>
+   <div data-act=tab data-v=board style="cursor:pointer"><svg class=field viewBox="0 0 200 120">${fieldSVG(u,k)}</svg></div>
+   <div class="sm muted" style="margin-top:8px">${esc(formLabel(u,k))} · Strong ${u.strong} · 터치하면 확대</div></div>
+  <div class=card><h3>실시간 ${U.name} 점검</h3>${liveCheck(s,k)}</div>
+ </div></div>`;
+}
+function snapRows(unitSnaps,max,del){
+ return unitSnaps.slice().reverse().slice(0,max).map(x=>{const n=unitSnaps.indexOf(x)+1;const flags=[x.noPlay?'노플레이':'',x.pen?`페널티 ${x.pen.side==='수비팀'?'+':'-'}${x.pen.yds}`:'',x.passRes||'',x.td?'TD':'',x.review?'확인 필요':'',x.stats.length?x.stats.map(t=>pname(t.pid).replace(/^#\S+ /,'')+' '+t.s).join(', '):''].filter(Boolean).join(' · ');
+  return `<tr><td>${n}</td><td>#${x.driveNo}</td><td>${x.q}</td><td>${x.down}&${x.dist}</td><td>${x.play}</td><td>${x.dir}</td><td><b>${x.noPlay?'—':x.yards}</b></td><td class=sm style="white-space:normal">${esc(flags)||'—'}</td>${del?`<td><button class="btn danger" style="padding:5px 9px" data-act=delSnap data-id=${x.id}>삭제</button></td>`:''}</tr>`}).join('');
+}
+function vLive(){
+ const s=cur();
+ if(!s)return `<div class=card style="max-width:680px"><div class=kick>LIVE VIEW</div><h3 class=bar style="margin-top:10px">아직 공유된 기록이 없어요</h3><p class=muted>기록 담당 기기에서 설정·백업 → 실시간 공유를 켜면 여기에 자동으로 나타납니다.</p>${syncStatusHTML()}<button class=btn style="margin-top:12px" data-act=viewerOff>내 기기 기록으로 돌아가기</button></div>`;
+ const k=UI.unit,U=UNITS[k],u=s.units[k];const unitSnaps=s.snaps.filter(x=>x.unit===k);const dsn=unitSnaps.filter(x=>x.driveNo===u.driveNo);
+ const live=SYNC.shared.live;const isLive=live&&live.sid===s.id;
+ return `<div class=phead><div><div class=kick>LIVE ${U.en} VIEW · 보기 전용</div><h1>${esc(s.name)}</h1><div class=sub>${esc(s.date)}${s.opp?' · vs '+esc(s.opp):''} · ${unitSnaps.length}스냅 · 마지막 수신 ${SYNC.shared.updated?hms(SYNC.shared.updated):'—'}</div></div>
+  <div class=tb>${isLive?`<span class="badge g">● 현재 기록 중인 경기</span>`:''}<span class=badge>드라이브 #${u.driveNo} · ${dsn.length}스냅</span><button class="btn ${UI.followLive?'on':''}" data-act=followLive>${UI.followLive?'✓ 기록 기기 따라가는 중':'기록 기기 따라가기'}</button></div></div>
+ ${SYNC.err?`<div class="note bad" style="margin-bottom:12px">${esc(SYNC.err)}</div>`:''}
+ <div class=rec><div class=stack>
+  <div class=card><div class=kick>CURRENT SITUATION · ${u.sit.q}</div><div class=sitbig style="margin-top:6px;font-size:40px">${sitText(u.sit)} <span>· ${ballText(u.sit.ytg,k)}</span></div>
+   <div class="sm muted" style="margin-top:6px">${esc(formLabel(u,k))} · Strong ${u.strong}</div></div>
+  <div class=card><h3>최근 ${U.name} 스냅</h3>${unitSnaps.length?`<div class=tbl><table><tr><th>#</th><th>드라이브</th><th>쿼터</th><th>상황</th><th>플레이</th><th>방향</th><th>야드</th><th>비고</th></tr>${snapRows(unitSnaps,UI.showAllLog?999:15,false)}</table></div>${unitSnaps.length>15?`<button class=btn style="margin-top:10px" data-act=toggleLog>${UI.showAllLog?'최근 15개만':'전체 보기 ('+unitSnaps.length+')'}</button>`:''}`:`<p class="muted sm">아직 기록된 ${U.name} 스냅이 없습니다.</p>`}</div>
+  ${u.memo||u.note?`<div class=card><h3>전술 · 코치 메모</h3>${u.memo?`<p style="white-space:pre-wrap">${esc(u.memo)}</p>`:''}${u.note?`<p style="white-space:pre-wrap" class=muted>${esc(u.note)}</p>`:''}</div>`:''}
+ </div><div class=stack>
+  <div class=card><h3>${U.name} 배치</h3><svg class=field viewBox="0 0 200 120">${fieldSVG(u,k)}</svg></div>
+  <div class=card><h3>실시간 ${U.name} 점검</h3>${liveCheck(s,k)}</div>
+ </div></div>`;
+}
+function liveCheck(s,k){
+ const u=s.units[k],D=k==='D';
+ const v=s.snaps.filter(x=>x.unit===k&&!x.noPlay);
+ const ds=v.filter(x=>x.driveNo===u.driveNo);
+ const avg=a=>a.length?a.reduce((t,x)=>t+x.yards,0)/a.length:null;
+ const items=[];
+ items.push(`<div class=note>이번 드라이브 <b>${ds.length}스냅 · ${ds.reduce((t,x)=>t+x.yards,0)}야드</b>${ds.length?` · 평균 ${f1(avg(ds))}yd`:''}</div>`);
+ if(v.length<5){items.push(`<div class=note>ⓘ 분석 가능한 ${UNITS[k].name} 스냅 ${v.length}회. 표본이 적어 ${D?'취약 지점':'강·약점'}을 단정하기 어렵습니다.</div>`)}
+ else{
+  const last5=v.slice(-5);items.push(`<div class=note>최근 5스냅 평균 <b>${f1(avg(last5))}yd</b> · 전체 평균 ${f1(avg(v))}yd (n=${v.length})</div>`);
+  const l3=v.slice(-3);if(l3.length===3&&l3.every(x=>x.dir===l3[0].dir&&x.dir!=='미확인')){const a=avg(l3);items.push(`<div class="note ${D?(a>=4?'bad':'warn'):(a>=4?'good':'warn')}">최근 3스냅 모두 <b>${l3[0].dir}</b> · 평균 ${f1(a)}yd${D?' — 같은 방향 반복 공략 중':''}</div>`)}
+  const dir=['왼쪽','중앙','오른쪽'].map(d=>{const a=v.filter(x=>x.dir===d);return `${d} ${a.length}회 ${f1(avg(a))}yd`}).join(' · ');
+  items.push(`<div class="note sm">${dir}</div>`);
+ }
+ const big=v.filter(x=>x.yards>=15).length;if(big)items.push(`<div class="note ${D?'bad':'good'}">15야드+ ${D?'허용':'플레이'} ${big}회</div>`);
+ const rv=s.snaps.filter(x=>x.unit===k&&x.review).length;if(rv)items.push(`<div class="note warn">확인 필요 표시 ${rv}스냅</div>`);
+ return `<div class=livebox>${items.join('')}</div>`;
+}
+
+/* ---------- 필드 SVG ---------- */
+function fieldSVG(st,k,opt={}){
+ const F=FORMS[k][st.formation];
+ let g=`<rect width=200 height=120 fill="#1d5a43"/>`;
+ for(let y=14;y<120;y+=16)g+=`<line x1=18 x2=182 y1=${y} y2=${y} stroke="rgba(255,255,255,.17)" stroke-width=.5 />`;
+ const los=k==='D'?106:18;
+ g+=`<line x1=18 x2=182 y1=${los} y2=${los} stroke="#fff" stroke-width=1.1 />`;
+ if(k==='D')g+=`<text x=100 y=7 text-anchor=middle font-size=3.6 fill="rgba(255,255,255,.75)">우리 수비 깊은 지역 ↑</text><text x=100 y=114 text-anchor=middle font-size=3.6 font-weight=700 fill="rgba(255,255,255,.85)">LINE OF SCRIMMAGE · 상대 공격 ↓</text>`;
+ else g+=`<text x=100 y=12 text-anchor=middle font-size=3.6 font-weight=700 fill="rgba(255,255,255,.85)">LINE OF SCRIMMAGE · 공격 방향 ↑</text><text x=100 y=116 text-anchor=middle font-size=3.6 fill="rgba(255,255,255,.75)">우리 백필드 ↓</text>`;
+ (st.strokes||[]).forEach(s=>{g+=s.length===1?`<circle cx=${s[0][0]} cy=${s[0][1]} r=1 fill="#ffd166"/>`:`<polyline points="${s.map(p=>p.join(',')).join(' ')}" fill=none stroke="#ffd166" stroke-width=1.4 stroke-linecap=round stroke-linejoin=round />`});
+ st.slots.forEach((p,i)=>{const pl=P(st.lineup[i]);const x=p[0],y=p[1];const sel=opt.sel===i;
+  g+=`<g class=pl data-slot=${i} style="cursor:pointer"><circle cx=${x} cy=${y} r=6.6 fill="#fff" stroke="${sel?'#d4a64a':'#1f3a8a'}" stroke-width="${sel?1.8:.7}"/><text x=${x} y=${y+2.1} text-anchor=middle font-size=${pl&&String(pl.num).length>2?4.4:5.6} font-weight=800 fill="#1f3a8a">${pl?esc(pl.num||'•'):'+'}</text><text x=${x} y=${y+11.5} text-anchor=middle font-size=3.7 font-weight=700 fill="#fff">${esc(F.L[i])}${pl?' '+esc(pl.name.slice(0,4)):''}</text></g>`});
+ return g;
+}
+
+/* ---------- 작전판 ---------- */
+function boardInit(){const s=cur();if(!s)return;const B=UI.board;if(B.sid!==s.id||B.unit!==UI.unit||!B.draft){B.sid=s.id;B.unit=UI.unit;B.draft=pickBoard(s.units[UI.unit]);B.undo=[]}}
+const isDirty=()=>JSON.stringify(pickBoard(cur().units[UI.unit]))!==JSON.stringify(UI.board.draft);
+function pushUndo(){const B=UI.board;B.undo.push(clone(B.draft));if(B.undo.length>50)B.undo.shift()}
+function vBoard(){
+ const s=cur();if(!s)return noSession();boardInit();
+ const k=UI.unit,U=UNITS[k],u=s.units[k],B=UI.board,d=B.draft,F=FORMS[k][d.formation];
+ const dirty=isDirty();
+ const roster=rosterPlayers(s).sort(numSort);const bench=roster.filter(p=>!d.lineup.includes(p.id));
+ const M=(m,l)=>`<button class="btn ${B.mode===m?'on':''}" data-act=bmode data-v=${m}>${l}</button>`;
+ return `<div class=phead><div><div class=kick>FIELD COMMAND BOARD · ${U.en}</div><h1>${esc(F.name)} / ${esc(d.coverage)}</h1><div class=sub>${esc(s.name)} · ${esc(s.type)} · 선수 11명 + 대기 명단 · 편집 후 적용</div></div>
+  <div class=tb>${dirty?`<span class="badge o">미적용 변경 있음</span>`:`<span class="badge g">현재 배치 표시</span>`}<button class="btn pri" data-act=bapply ${dirty?'':'disabled style="opacity:.5"'}>✓ 배치 적용</button><button class=btn data-act=tab data-v=record>기록 화면</button></div></div>
+ <div class=card style="margin-bottom:16px"><div class=toolbar><div class=tb>${M('swap','♟ 선수 변경')}${M('move','↗ 위치 조정')}${M('pen','✎ 펜')}${M('erase','⌫ 지우개')}</div>
+  <div class=tb><button class=btn data-act=bflip>↔ 스트롱 반전</button><button class=btn data-act=bundo ${B.undo.length?'':'disabled style="opacity:.5"'}>↶ 되돌리기</button><button class=btn data-act=bclear>필기 모두 지우기</button><button class=btn data-act=bresetPos>위치만 복원</button><button class=btn data-act=bresetStart>선발 배치 복원</button></div></div>
+  <div class=tb style="margin-top:12px"><span class=lbl style="margin:0">포메이션</span><select class="txt inl" data-chg=bform>${Object.entries(FORMS[k]).map(([id,x])=>`<option value=${id} ${d.formation===id?'selected':''}>${x.name}</option>`).join('')}</select>
+   <span class=lbl style="margin:0">${U.coverLbl}</span><select class="txt inl" data-chg=bcover>${U.covers.map(c=>`<option ${d.coverage===c?'selected':''}>${c}</option>`).join('')}</select>
+   <button class=btn data-act=bauto>빈 자리 자동 배치</button></div></div>
+ <div class=rec><div class=card style="padding:12px;background:#1d5a43;border-color:#174a37">
+   <div class=toolbar style="color:#fff;padding:2px 6px 8px;font-size:14px"><span>${k==='D'?'우리 수비 진영':'우리 공격 진영'} · 작전판</span><span>전술: ${esc(F.name)} / ${esc(d.coverage)} · Strong ${d.strong}</span></div>
+   <svg id=bfield class=field viewBox="0 0 200 120">${fieldSVG(d,k)}</svg>
+   <div class=sm style="color:rgba(255,255,255,.8);padding:8px 6px 2px">${{swap:'선수 원을 터치해 교체합니다.',move:'선수 원을 끌어서 위치를 옮깁니다.',pen:'필드 위에 손가락/펜으로 그립니다.',erase:'지우고 싶은 선을 문지르세요.'}[B.mode]}</div></div>
+  <div class=stack>
+   <div class=card><h3>대기 선수 (${bench.length}명)</h3>${bench.length?`<div class=bench>${bench.map(p=>`<span class=badge>${p.num?'#'+esc(p.num)+' ':''}${esc(p.name)} <span class=muted style="margin-left:4px">${esc(p.pos||'')}</span></span>`).join('')}</div>`:`<p class="sm muted">대기 선수가 없습니다.</p>`}
+    <hr class=d><button class="btn big" style="width:100%;justify-content:center" data-act=tab data-v=players>+ 선수 추가·관리</button><p class="sm muted">현재 기록에 참가 등록된 선수만 표시합니다.</p></div>
+   <div class=card><h3>배치 변경 이력</h3>${u.history.length?`<div class=hist>${u.history.slice(0,20).map(h=>`<div><b>${hm(h.ts)}</b> · ${esc(h.txt)}</div>`).join('')}</div>`:`<p class="sm muted">아직 배치 변경 이력이 없습니다.</p>`}
+    <div class="note warn sm" style="margin-top:12px">'배치 적용' 이후 저장되는 새로운 스냅에만 변경된 11명과 위치를 기록합니다. 과거 스냅은 변경되지 않습니다.</div></div>
+   <div class=card><h3>작전 목적 메모</h3><textarea class=txt data-inp=memo placeholder="예) ${k==='D'?'4-3 Over / Cover 3. 중앙 빅플레이를 막고, 외곽 1~2야드는 상황에 따라 감수.':'Shotgun 2x2 / RPO. 박스 인원 보고 런/패스 결정, 3rd & short는 인사이드 존.'}">${esc(u.memo)}</textarea></div>
+  </div></div>`;
+}
+function svgPt(svg,e){const pt=svg.createSVGPoint();pt.x=e.clientX;pt.y=e.clientY;const r=pt.matrixTransform(svg.getScreenCTM().inverse());return[Math.round(r.x*10)/10,Math.round(r.y*10)/10]}
+function bindBoard(){
+ const svg=$('#bfield');if(!svg||UI.viewer)return;const B=UI.board,k=UI.unit;
+ let drag=null,drawing=null,erasing=false;
+ const redraw=()=>{svg.innerHTML=fieldSVG(B.draft,k)};
+ const eraseAt=pt=>{const n=B.draft.strokes.length;B.draft.strokes=B.draft.strokes.filter(s=>!s.some(p=>Math.hypot(p[0]-pt[0],p[1]-pt[1])<4));if(n!==B.draft.strokes.length)redraw()};
+ svg.addEventListener('pointerdown',e=>{
+  const pt=svgPt(svg,e);const g=e.target.closest('.pl');const i=g?+g.dataset.slot:-1;
+  if(B.mode==='swap'){if(i>=0)pickModal(i,'draft');return}
+  e.preventDefault();
+  if(B.mode==='move'){if(i<0)return;pushUndo();drag=i;svg.setPointerCapture(e.pointerId);return}
+  if(B.mode==='pen'){pushUndo();drawing=[pt];B.draft.strokes.push(drawing);svg.setPointerCapture(e.pointerId);redraw();return}
+  if(B.mode==='erase'){pushUndo();erasing=true;svg.setPointerCapture(e.pointerId);eraseAt(pt)}
+ });
+ svg.addEventListener('pointermove',e=>{
+  if(drag==null&&!drawing&&!erasing)return;const pt=svgPt(svg,e);
+  if(drag!=null){B.draft.slots[drag]=[clamp(pt[0],7,193),clamp(pt[1],7,113)];redraw()}
+  else if(drawing){const l=drawing[drawing.length-1];if(Math.hypot(pt[0]-l[0],pt[1]-l[1])>1.2){drawing.push(pt);redraw()}}
+  else eraseAt(pt);
+ });
+ const end=()=>{if(drag!=null||drawing||erasing){drag=null;drawing=null;erasing=false;renderView()}};
+ svg.addEventListener('pointerup',end);svg.addEventListener('pointercancel',end);
+}
+function pickModal(i,target){
+ const s=cur(),k=UI.unit;const st=target==='draft'?UI.board.draft:s.units[k];const lab=FORMS[k][st.formation].L[i];
+ const roster=rosterPlayers(s).sort((a,b)=>(posMatch(lab,b.pos)-posMatch(lab,a.pos))||numSort(a,b));
+ const body=roster.length?`<p class="sm muted">${lab} 포지션 등록 선수가 위에 표시됩니다. 다른 자리에 있는 선수를 고르면 서로 자리를 바꿉니다.</p><div class=pickgrid>${roster.map(p=>{const at=st.lineup.indexOf(p.id);return `<button class="pk ${posMatch(lab,p.pos)?'match':''}" data-act=pickP data-pid=${p.id} data-i=${i} data-t=${target}><b>${p.num?'#'+esc(p.num)+' ':''}${esc(p.name)}</b><span class="sm muted">${esc(p.pos||'포지션 미등록')}${at>=0?' · 현재 '+FORMS[k][st.formation].L[at]:''}</span></button>`}).join('')}</div>`
+  :`<p>등록된 선수가 없습니다. 선수 관리에서 먼저 명단을 등록해 주세요.</p>`;
+ openModal({title:`${lab} 자리 선수 선택`,wide:true,body,actions:[{label:'닫기'},{label:'빈 자리로',cls:'danger',fn:()=>{ACT.pickP({pid:'',i:String(i),t:target});return false}},{label:'선수 관리로',fn:()=>{UI.tab='players';render()}}]});
+}
+
+/* ---------- 분석 ---------- */
+function analyze(s,k){
+ const all=s.snaps.filter(x=>x.unit===k),v=all.filter(x=>!x.noPlay);
+ const avg=a=>a.length?a.reduce((t,x)=>t+x.yards,0)/a.length:null;
+ const run=v.filter(x=>x.play==='런'),pass=v.filter(x=>x.play==='패스');
+ const dirs=['왼쪽','중앙','오른쪽'].map(d=>{const a=v.filter(x=>x.dir===d);return{d,n:a.length,avg:avg(a),five:a.filter(x=>x.yards>=5).length,runN:a.filter(x=>x.play==='런').length,run:avg(a.filter(x=>x.play==='런')),passN:a.filter(x=>x.play==='패스').length,pass:avg(a.filter(x=>x.play==='패스'))}});
+ const third=v.filter(x=>x.down===3&&!x.pen);const conv=third.filter(x=>x.yards>=x.dist||x.td).length;
+ const fourth=v.filter(x=>x.down===4&&!x.pen);const conv4=fourth.filter(x=>x.yards>=x.dist||x.td).length;
+ const rz=v.filter(x=>x.ytg!=null&&x.ytg<=20);
+ const passK=pass.filter(x=>x.passRes);const comp=passK.filter(x=>x.passRes==='성공').length;
+ const downs=[1,2,3,4].map(d=>{const a=v.filter(x=>x.down===d);return{d,n:a.length,avg:avg(a)}});
+ const forms={};v.forEach(x=>{(forms[x.form]=forms[x.form]||[]).push(x)});
+ const qs={};v.forEach(x=>{(qs[x.q]=qs[x.q]||[]).push(x)});
+ const drives=s.drives.filter(d=>d.unit===k).sort((a,b)=>a.no-b.no).map(d=>{const a=all.filter(x=>x.driveNo===d.no);return{no:d.no,n:a.length,yds:a.filter(x=>!x.noPlay).reduce((t,x)=>t+x.yards,0),res:d.result||(d.no===s.units[k].driveNo?'진행 중':'—')}});
+ const statCount={};all.forEach(x=>x.stats.forEach(t=>{statCount[t.s]=(statCount[t.s]||0)+1}));
+ const pl={};const get=id=>pl[id]=pl[id]||{snaps:0,c:{},rush:0,rec:0,att:0,comp:0,pyds:0,int:0,sack:0};
+ all.forEach(x=>{x.lineup.forEach(id=>{if(id)get(id).snaps++});
+  x.stats.forEach(t=>{const r=get(t.pid);r.c[t.s]=(r.c[t.s]||0)+1;if(!x.noPlay){if(t.s==='캐리')r.rush+=x.yards;if(t.s==='캐치')r.rec+=x.yards}});
+  if(k==='O'&&x.play==='패스'&&x.passRes&&!x.noPlay&&x.lineup[5]){const r=get(x.lineup[5]);if(x.passRes!=='색'){r.att++;if(x.passRes==='성공'){r.comp++;r.pyds+=x.yards}if(x.passRes==='INT')r.int++}else r.sack++}});
+ return{all,v,n:v.length,avg:avg(v),run:avg(run),runN:run.length,pass:avg(pass),passN:pass.length,dirs,thirdN:third.length,conv,fourthN:fourth.length,conv4,
+  rzN:rz.length,rzAvg:avg(rz),rzTD:rz.filter(x=>x.td).length,passKN:passK.length,comp,big:v.filter(x=>x.yards>=15),neg:v.filter(x=>x.yards<0).length,downs,forms,qs,drives,statCount,pl,
+  unknownDir:v.filter(x=>x.dir==='미확인').length,unknownPlay:v.filter(x=>x.play==='미확인').length,review:all.filter(x=>x.review).length,pens:all.filter(x=>x.pen).length,td:v.filter(x=>x.td).length}
+}
+function insights(A,k){
+ const D=k==='D',out=[];
+ if(A.n<8)out.push(['','ⓘ 분석 가능한 '+UNITS[k].name+' 스냅 '+A.n+'회. 표본이 적어 '+(D?'취약 지점':'강·약점')+'을 단정하기 어렵습니다.']);
+ if(A.n>=1){
+  A.dirs.filter(x=>x.n>=4).forEach(x=>{const diff=x.avg-A.avg;if(Math.abs(diff)>=2){const badDir=D?diff>0:diff<0;out.push([badDir?'bad':'good',`${x.d} 방향 평균 ${f1(x.avg)}yd (n=${x.n}) — 전체 평균보다 ${f1(Math.abs(diff))}yd ${diff>0?'높음':'낮음'}.${D&&diff>0?' 해당 방향 엣지·갭 책임 점검 필요.':''}${!D&&diff>0?' 효율이 좋은 방향.':''}${!D&&diff<0?' 막히는 방향.':''}`])}});
+  if(A.runN>=4&&A.passN>=4)out.push(['',`런 ${A.runN}회 평균 ${f1(A.run)}yd · 패스 ${A.passN}회 평균 ${f1(A.pass)}yd. 플레이 비율 런 ${pct(A.runN,A.runN+A.passN)}.`]);
+  if(A.big.length)out.push([D?'bad':'good',`15야드 이상 ${D?'허용':'플레이'} ${A.big.length}회 (${A.big.slice(0,4).map(x=>`D#${x.driveNo} ${x.play}·${x.dir} ${x.yards}yd`).join(', ')}).`]);
+  if(A.thirdN>=3){const r=A.conv/A.thirdN;out.push([D?(r>=.5?'bad':'good'):(r>=.4?'good':'bad'),D?`3다운 저지율 ${pct(A.thirdN-A.conv,A.thirdN)} (${A.thirdN-A.conv}/${A.thirdN}).`:`3다운 전환율 ${pct(A.conv,A.thirdN)} (${A.conv}/${A.thirdN}).`])}
+  if(A.passKN>=4)out.push(['',`${D?'상대 ':''}패스 성공률 ${pct(A.comp,A.passKN)} (${A.comp}/${A.passKN}).`]);
+  if(D){const m=A.statCount['미스 태클']||0,cv=A.statCount['커버 실수']||0;if(m>=2)out.push(['warn',`미스 태클 ${m}회 기록.`]);if(cv>=2)out.push(['warn',`커버 실수 ${cv}회 기록.`])}
+  else{const dr=A.statCount['드롭']||0,bf=A.statCount['블록 실패']||0;if(dr>=2)out.push(['warn',`드롭 ${dr}회.`]);if(bf>=2)out.push(['warn',`블록 실패 ${bf}회.`]);if(A.neg>=3)out.push(['bad',`마이너스 야드 플레이 ${A.neg}회.`])}
+  if(A.unknownDir)out.push(['warn',`방향 미확인 ${A.unknownDir}회 — 방향별 평균에서 제외됨. 경기 후 영상으로 보정 권장.`]);
+  if(A.review)out.push(['warn',`'확인 필요' 표시 스냅 ${A.review}회.`]);
+ }
+ return out.map(([c,t])=>`<div class="note ${c}">${esc(t)}</div>`).join('');
+}
+function vAnalysis(){
+ const s=cur();if(!s)return noSession();
+ const k=UI.unit,U=UNITS[k],u=s.units[k],A=analyze(s,k),D=k==='D';
+ const tb=(head,rows)=>`<div class=tbl><table><tr>${head.map(h=>`<th>${h}</th>`).join('')}</tr>${rows.join('')||`<tr><td colspan=${head.length} class=muted>기록 없음</td></tr>`}</table></div>`;
+ const plRows=Object.entries(A.pl).filter(([id,r])=>Object.keys(r.c).length||r.att||r.sack).sort((a,b)=>numSort(P(a[0])||{},P(b[0])||{})).map(([id,r])=>{const c=x=>r.c[x]||0;
+  return D?`<tr><td><b>${esc(pname(id))}</b></td><td>${r.snaps}</td><td>${c('태클')}</td><td>${c('어시스트')}</td><td>${c('TFL')}</td><td>${c('색')}</td><td>${c('QB 압박')}</td><td>${c('PBU')}</td><td>${c('INT')}</td><td>${c('FF')}/${c('FR')}</td><td>${c('미스 태클')}</td><td>${c('커버 실수')}</td></tr>`
+  :`<tr><td><b>${esc(pname(id))}</b></td><td>${r.snaps}</td><td>${r.att?`${r.comp}/${r.att} · ${r.pyds}yd · INT ${r.int}`:'—'}</td><td>${c('캐리')} · ${r.rush}yd</td><td>${c('타겟')}</td><td>${c('캐치')} · ${r.rec}yd</td><td>${c('드롭')}</td><td>${c('TD')}</td><td>${c('퍼스트다운')}</td><td>${c('블록 실패')}</td><td>${c('펌블 로스트')}</td></tr>`});
+ return `<div class=phead><div><div class=kick>${U.en} INTELLIGENCE</div><h1>기록 분석 · 코칭 보조</h1><div class=sub>${esc(s.name)} · ${esc(s.type)} · ${U.name} · 분석되지 않은 값은 추정하지 않습니다.</div></div>
+  <div class=tb><button class="btn pri" data-act=aiCopy>AI 질문 복사</button><a class=btn href="https://chatgpt.com/" target="_blank" rel="noopener">ChatGPT 열기</a><a class=btn href="https://claude.ai/new" target="_blank" rel="noopener">Claude 열기</a><button class=btn data-act=csv>CSV 내보내기</button></div></div>
+ <div class=stats4><div class=stat><div class=k>${U.name} 스냅</div><div class=v>${A.n}회</div></div><div class=stat><div class=k>${U.avgLbl}</div><div class=v>${f1(A.avg)} yd</div></div><div class=stat><div class=k>런 평균 <span class=sm>(n=${A.runN})</span></div><div class=v>${f1(A.run)} yd</div></div><div class=stat><div class=k>패스 평균 <span class=sm>(n=${A.passN})</span></div><div class=v>${f1(A.pass)} yd</div></div></div>
+ <div class=grid2>
+  <div class=card><h3>자동 점검 · 표본 수 기반</h3><div class=livebox>${insights(A,k)}</div></div>
+  <div class=card><h3>진행 방향별 ${U.name}</h3>${tb(['진행 방향','기록 수','평균','런 (n·평균)','패스 (n·평균)','5야드 이상'],A.dirs.map(x=>`<tr><td>${x.d}</td><td>${x.n}</td><td>${f1(x.avg)}yd</td><td>${x.runN} · ${f1(x.run)}</td><td>${x.passN} · ${f1(x.pass)}</td><td>${x.five}/${x.n}</td></tr>`))}
+   <p class="sm muted">방향 미확인 플레이는 방향별 평균에서 제외됩니다. 방향만으로 ${D?'갭 실패':'블로킹 성패'}를 추정하지 않습니다.</p><hr class=d>
+   <div>${D?'3다운 저지':'3다운 전환'}: <b>${A.thirdN?(D?pct(A.thirdN-A.conv,A.thirdN):pct(A.conv,A.thirdN))+` (${D?A.thirdN-A.conv:A.conv}/${A.thirdN})`:'—'}</b> · 4다운: <b>${A.fourthN?`${A.conv4}/${A.fourthN} 전환`:'—'}</b> · 레드존: <b>${A.rzN}스냅</b>, 평균 ${f1(A.rzAvg)}야드, TD ${A.rzTD}</div>
+   <div style="margin-top:6px">${D?'상대 ':''}패스 성공률: <b>${A.passKN?pct(A.comp,A.passKN)+` (${A.comp}/${A.passKN})`:'—'}</b> · 15yd+: <b>${A.big.length}</b> · 페널티 스냅: <b>${A.pens}</b></div>
+   <p class="sm muted">확인 가능한 스냅만 집계하며 페널티가 있는 3다운은 자동 ${D?'저지율':'전환율'}에서 제외합니다.</p></div>
+  <div class=card><h3>드라이브 결과</h3>${tb(['드라이브','스냅',D?'허용 야드':'전진 야드','종료 사유'],A.drives.map(x=>`<tr><td>#${x.no}</td><td>${x.n}</td><td>${x.n?x.yds:'—'}</td><td>${esc(x.res)}</td></tr>`))}</div>
+  <div class=card><h3>현재 전술 · 코치 메모</h3><div class=form><label>전술 운영 목적 / 감수하는 위험<textarea class=txt data-inp=memo placeholder="${esc(formLabel(u,k))} — 무엇을 막고/노리고, 무엇을 감수하는지">${esc(u.memo)}</textarea></label><label>코치 메모 (하프타임·경기 후)<textarea class=txt data-inp=note>${esc(u.note)}</textarea></label></div></div>
+  <div class=card><h3>다운별</h3>${tb(['다운','스냅','평균'],A.downs.map(x=>`<tr><td>${x.d}다운</td><td>${x.n}</td><td>${f1(x.avg)}yd</td></tr>`))}</div>
+  <div class=card><h3>포메이션 · 쿼터별</h3>${tb(['구분','스냅','평균'],[...Object.entries(A.forms).map(([f,a])=>`<tr><td>${esc(f)}</td><td>${a.length}</td><td>${f1(a.reduce((t,x)=>t+x.yards,0)/a.length)}yd</td></tr>`),...['1Q','2Q','3Q','4Q','OT'].filter(q=>A.qs[q]).map(q=>`<tr><td>${q}</td><td>${A.qs[q].length}</td><td>${f1(A.qs[q].reduce((t,x)=>t+x.yards,0)/A.qs[q].length)}yd</td></tr>`)])}</div>
+ </div>
+ <div class=card style="margin-top:16px"><h3>선수별 ${U.name} 스탯 (이 기록)</h3>${D?tb(['선수','출전 스냅','태클','어시','TFL','색','압박','PBU','INT','FF/FR','미스','커버 실수'],plRows):tb(['선수','출전 스냅','패스 (성공/시도)','러싱','타겟','리시빙','드롭','TD','1st 획득','블록 실패','펌블'],plRows)}
+  <p class="sm muted">${D?'':'패스 기록은 QB 자리(작전판의 QB)에 있던 선수에게 자동 집계됩니다. '}기록하지 못한 스탯은 0으로 간주하지 않으니 참고용으로만 보세요.</p></div>`;
+}
+function aiPrompt(s,k){
+ const U=UNITS[k],u=s.units[k],A=analyze(s,k),D=k==='D';
+ const L=[];
+ L.push(`너는 미식축구 ${U.name} 코치를 돕는 분석 보조야. 아래는 수원 블루나이츠 "${s.name}" (${s.type}, ${s.date}${s.opp?', 상대 '+s.opp:''})의 ${U.name} 기록이야.`);
+ L.push(`현재 전술: ${formLabel(u,k)} · Strong ${u.strong}`);
+ if(u.memo)L.push(`전술 운영 목적/감수 위험: ${u.memo}`);
+ if(u.note)L.push(`코치 메모: ${u.note}`);
+ L.push('','[요약]');
+ L.push(`${U.name} 스냅 ${A.n}회 · ${U.avgLbl} ${f1(A.avg)}yd · 런 ${A.runN}회 평균 ${f1(A.run)}yd · 패스 ${A.passN}회 평균 ${f1(A.pass)}yd`);
+ L.push('방향별: '+A.dirs.map(x=>`${x.d} ${x.n}회 평균 ${f1(x.avg)}yd (5yd+ ${x.five})`).join(' / ')+` / 방향 미확인 ${A.unknownDir}회`);
+ L.push(`3다운: ${A.thirdN}회 중 ${A.conv}회 전환 · 레드존 ${A.rzN}스냅 평균 ${f1(A.rzAvg)}yd · 15yd+ ${A.big.length}회 · 페널티 ${A.pens}스냅`);
+ L.push('드라이브: '+(A.drives.map(x=>`#${x.no} ${x.n}스냅 ${x.yds}yd → ${x.res}`).join(' / ')||'없음'));
+ const sc=Object.entries(A.statCount).map(([a,b])=>`${a} ${b}`).join(', ');if(sc)L.push('기록된 스탯 합계: '+sc);
+ L.push('','[스냅 기록 CSV]',csvText(s,k,true));
+ L.push('',`[요청]`,D?`1) 상대 공격의 경향(방향·플레이 종류·다운별)을 정리해줘. 2) 우리 수비의 취약 지점과 그 근거를 말해줘. 3) 다음 드라이브/후반에 바꿀 수 있는 배치·커버리지 조정을 2~3개 제안해줘.`:`1) 우리 공격에서 효율이 좋은/나쁜 플레이·방향을 정리해줘. 2) 다운·거리별 플레이콜 경향과 문제점을 말해줘. 3) 다음 드라이브/후반 플레이콜 조정안을 2~3개 제안해줘.`,`표본이 적은 항목은 단정하지 말고 표본 수를 함께 적어줘. '미확인' 값은 추정하지 마.`);
+ return L.join('\n');
+}
+function csvText(s,k,compact){
+ const q=v=>{v=String(v??'');return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v};
+ const head=['유닛','스냅#','드라이브','쿼터','다운','거리','엔드존까지','플레이','방향','야드','패스결과','페널티','노플레이','확인필요','TD','전술','선수스탯'];
+ const rows=[head.join(',')];let n=0;
+ s.snaps.filter(x=>!k||x.unit===k).forEach(x=>{n++;rows.push([UNITS[x.unit].name,n,x.driveNo,x.q,x.down,x.dist,x.ytg??'',x.play,x.dir,x.noPlay?'':x.yards,x.passRes||'',x.pen?`${x.pen.side} ${x.pen.yds}yd${x.pen.auto?' 자동1st':''}`:'',x.noPlay?'Y':'',x.review?'Y':'',x.td?'Y':'',x.form,x.stats.map(t=>`${pname(t.pid)}:${t.s}`).join(' / ')].map(q).join(','))});
+ if(compact&&rows.length>201)return rows[0]+'\n...(앞부분 생략)\n'+rows.slice(-200).join('\n');
+ return rows.join('\n');
+}
+
+/* ---------- 선수 관리 ---------- */
+function vPlayers(){
+ const s=cur();
+ const tot={};DB.sessions.forEach(ss=>ss.snaps.forEach(x=>x.stats.forEach(t=>{tot[t.pid]=(tot[t.pid]||0)+1})));
+ const list=DB.players.slice().sort(numSort);
+ return `<div class=phead><div><div class=kick>ROSTER</div><h1>선수 관리</h1><div class=sub>포지션은 슬래시로 여러 개 입력 (예: DE/TE, LB, CB/WR). 자동 배치에 사용됩니다.</div></div></div>
+ <div class=grid2><div class=card><h3>선수 등록</h3><div class=form>
+  <div class=preg><input class=txt id=pNum placeholder="번호" inputmode=numeric autocomplete=off><input class=txt id=pName placeholder="이름" autocomplete=off enterkeyhint=next><input class="txt pp" id=pPos placeholder="포지션 (예: DE/TE)" autocomplete=off autocapitalize=characters enterkeyhint=done></div>
+  <button class="btn pri" data-act=addPlayer>+ 추가</button></div>
+  <hr class=d><h3>한 번에 등록</h3><textarea class=txt id=pBulk placeholder="한 줄에 한 명: 번호 이름 포지션&#10;86 임규석 WR&#10;55 정성엽 DE/TE&#10;12 홍길동 QB"></textarea><button class=btn style="margin-top:8px" data-act=bulkAdd>명단 일괄 추가</button></div>
+  <div class=card><h3>포지션 표기 안내</h3><div class="note sm">수비: DE, DT, NT, DL, LB(WILL/MIKE/SAM), OLB, ILB, CB, NB, SS, FS, S, DB<br>공격: QB, RB, FB, WR(X/Z/SL), TE, OL(LT/LG/C/RG/RT), OT, OG<br><br>투웨이 선수는 "DE/TE"처럼 적으면 수비·공격 양쪽에 자동 배치 후보가 됩니다.${s?`<br><br>현재 기록 <b>${esc(s.name)}</b>의 참가 선수는 아래 체크박스로 관리합니다. 새로 등록한 선수는 자동으로 참가 등록됩니다.`:''}</div></div></div>
+ <div class=card style="margin-top:16px"><div class=toolbar style="margin-bottom:12px"><h3 style="margin:0">명단 (${list.length}명)</h3>${list.length?`<button class="btn danger" data-act=delAllPlayers>명단 전체 삭제</button>`:''}</div>
+ ${list.length?`<div class=plist>${list.map(p=>`<div class=prow><div class=pn><b>${p.num?'#'+esc(p.num)+' ':''}${esc(p.name)}</b> <span class="sm muted">${esc(p.pos||'포지션 없음')} · 누적 스탯 ${tot[p.id]||0}</span></div>${s?`<label class="ck sm"><input type=checkbox data-chg=roster data-id=${p.id} ${s.roster.includes(p.id)?'checked':''}> 참가</label>`:''}<button class=btn data-act=editPlayer data-id=${p.id}>수정</button><button class="btn danger" data-act=delPlayer data-id=${p.id}>삭제</button></div>`).join('')}</div>`:'<p class=muted>등록된 선수가 없습니다.</p>'}</div>`;
+}
+
+/* ---------- 설정·백업 ---------- */
+function vSettings(){
+ const s=cur();let size=0;try{size=JSON.stringify(DB).length}catch(e){}
+ return `<div class=phead><div><div class=kick>SETTINGS · BACKUP</div><h1>설정 · 백업</h1><div class=sub>이 기기 브라우저에만 저장됩니다. 다른 기기나 코치에게 넘길 땐 JSON 백업을 공유하세요.</div></div></div>
+ ${!IN_CLAUDE?`<div class=card style="margin-bottom:16px"><h3>📤 기록 주고받기</h3><div class=note>기록하는 사람이 경기 중·후에 <b>기록 보내기</b>로 백업 파일을 단톡방에 올리고, 보는 사람은 그 파일을 아래 <b>백업 불러오기</b>로 엽니다.</div><div class=tb style="margin-top:12px"><button class="btn pri big" data-act=shareJson>📤 기록 보내기 (카톡·에어드롭)</button></div></div>`:''}
+ ${IN_CLAUDE?`<div class=card style="margin-bottom:16px"><h3>📡 실시간 공유 (서버 비용 없음)</h3><div id=syncStatus>${syncStatusHTML()}</div>
+  ${SYNC.db?`<div class=grid2 style="margin-top:14px"><div><div class=lbl>기록하는 사람 (이 기기에서 입력)</div>
+   ${UI.viewer?`<p class="sm muted">실시간 보기 중에는 공유를 켤 수 없어요. 상단 '내 기기 기록으로'를 먼저 누르세요.</p>`:SYNC.canWrite===false?`<p class="sm muted">이 계정은 보기 권한만 있어요. 기록은 소유자 또는 편집자로 초대된 사람만 올릴 수 있어요.</p>`:SYNC.on?`<div class=tb><button class="btn danger" data-act=shareOff>공유 끄기</button><button class=btn data-act=pushAll>모든 기록 다시 올리기</button></div>`:`<button class="btn pri big" data-act=shareOn>이 기기를 기록 기기로 · 공유 켜기</button>`}
+   <p class="sm muted">켜 두면 스냅을 저장할 때마다 1초 안에 자동 업로드됩니다. 기록은 한 기기에서만 해 주세요 (동시에 두 기기가 같은 경기를 기록하면 마지막 저장이 덮어씁니다).</p></div>
+   <div><div class=lbl>보는 사람 (HC · OC · DC)</div>${UI.viewer?`<button class=btn data-act=viewerImport>공유 기록을 내 기기로 복사</button>`:`<button class="btn big" data-act=viewerOn>📡 실시간 보기 열기</button>`}
+   <p class="sm muted">claude.ai에서 이 페이지의 <b>공유</b> 메뉴로 코치들을 초대하세요 (claude.ai 로그인 필요). 초대받은 사람은 링크를 열고 상단 '실시간 보기'를 누르면 기록·분석·작전판을 실시간으로 봅니다. 보는 사람은 수정할 수 없어요.</p></div></div>`:''}</div>`:''}
+ <div class=grid2><div class=card><h3>백업 · 공유</h3>
+  <div class="note ${storeOK?'':'bad'}">저장 상태: <b>${storeOK?'기기 내부 저장 중':'이 화면에서는 저장이 막혀 있음 — 새로고침하면 사라집니다. 지금 백업하세요.'}</b> · 데이터 ${Math.round(size/1024)}KB${DB.lastBackup?` · 마지막 백업 ${new Date(DB.lastBackup).toLocaleString('ko-KR')}`:''}</div>
+  <div class=tb style="margin-top:12px"><button class="btn pri" data-act=expJson>JSON 백업 파일 저장</button><button class=btn data-act=copyJson>JSON 복사</button><button class=btn data-act=csvAll>전체 CSV 내보내기</button></div>
+  <hr class=d><h3>백업 불러오기</h3><p class="sm muted">불러오면 현재 기기의 데이터가 백업 내용으로 바뀝니다.</p>
+  <input type=file accept=".json,application/json" data-chg=impFile class=txt>
+  <textarea class=txt id=impTxt style="margin-top:10px" placeholder="또는 JSON 내용을 여기에 붙여넣기"></textarea><button class=btn style="margin-top:8px" data-act=impPaste>붙여넣은 JSON 불러오기</button></div>
+  <div class=stack>${s?`<div class=card><h3>현재 기록 관리</h3><div class=form><label>이름<input class=txt id=sName value="${esc(s.name)}"></label><label>상대팀<input class=txt id=sOpp value="${esc(s.opp||'')}"></label><label>날짜<input class=txt type=date id=sDate value="${esc(s.date)}"></label><div class=tb><button class="btn pri" data-act=saveSessInfo>저장</button><button class="btn danger" data-act=delSess>이 기록 삭제</button></div></div></div>`:''}
+  <div class=card><h3>초기화</h3><p class="sm muted">모든 선수·기록을 지웁니다. 먼저 백업하세요.</p><button class="btn danger" data-act=resetAll>전체 데이터 초기화</button></div></div></div>`;
+}
+
+/* ================= 액션 ================= */
+function resetForm(){UI.form=freshForm();UI.pending={};UI.detOpen=false}
+const ACT={
+ tab:d=>{UI.tab=d.v;render();window.scrollTo(0,0)},
+ unit:d=>{if(UI.unit===d.v)return;UI.unit=d.v;resetForm();render()},
+ resume:d=>{UI.unit=d.v;UI.tab='record';resetForm();render()},
+ openSess:d=>{DB.currentId=d.id;if(UI.viewer)UI.followLive=false;save();resetForm();UI.tab='record';render()},
+ viewerOn:()=>{if(!SYNC.db)return toast('이 화면에서는 실시간 보기를 쓸 수 없어요');LOCAL=DB;UI.viewer=true;UI.followLive=true;UI.board.draft=null;resetForm();buildViewerDB();UI.tab='record';render();window.scrollTo(0,0)},
+ viewerOff:()=>{DB=LOCAL||load()||DB;LOCAL=null;UI.viewer=false;UI.board.draft=null;resetForm();render()},
+ viewerImport:()=>confirmBox('공유된 선수·기록을 이 기기로 복사할까요? 이 기기의 기존 데이터는 교체됩니다.',()=>{DB=clone(DB);LOCAL=null;UI.viewer=false;UI.board.draft=null;save();render();toast('이 기기로 복사했습니다')},true),
+ followLive:()=>{UI.followLive=!UI.followLive;buildViewerDB();render()},
+ shareOn:()=>{SYNC.on=true;try{localStorage.setItem(KEY+'-share','on')}catch(e){}SYNC.hashes={};pushNow(false);renderHeader();renderView();toast('실시간 공유를 켰습니다')},
+ shareOff:()=>{SYNC.on=false;try{localStorage.setItem(KEY+'-share','off')}catch(e){}renderHeader();renderView();toast('실시간 공유를 껐습니다')},
+ shareJson:()=>{const name=`블루나이츠_기록_${today()}.json`,text=JSON.stringify(DB);
+  try{const f=new File([text],name,{type:'application/json'});if(navigator.canShare&&navigator.canShare({files:[f]})){navigator.share({files:[f],title:'블루나이츠 기록'}).then(()=>{DB.lastBackup=Date.now();save()}).catch(()=>{});return}}catch(e){}
+  exportFile(name,text,()=>{DB.lastBackup=Date.now();save()})},
+ pushAll:()=>{SYNC.hashes={};pushNow(true);toast('모든 기록을 올리는 중')},
+ newSession:()=>newSessionModal(),
+ play:d=>{UI.form.play=d.v;if(d.v!=='패스')UI.form.passRes=null;renderView()},
+ dir:d=>{UI.form.dir=d.v;renderView()},
+ passRes:d=>{UI.form.passRes=UI.form.passRes===d.v?null:d.v;renderView()},
+ yd:d=>{UI.form.yards=(Math.round(+UI.form.yards)||0)+(+d.v);renderView()},
+ penSide:d=>{UI.form.pen.side=d.v;renderView()},
+ penYds:d=>{UI.form.pen.yds=+d.v;renderView()},
+ ovrDown:d=>{UI.form.ovr.down=+d.v;renderView()},
+ toggleLog:()=>{UI.showAllLog=!UI.showAllLog;renderView()},
+ tile:d=>statModal(d.pid,+d.i),
+ tileEmpty:d=>pickModal(+d.i,'live'),
+ statTog:(d,el)=>{const a=UI.pending[d.pid]=UI.pending[d.pid]||[];const i=a.indexOf(d.v);if(i>=0)a.splice(i,1);else a.push(d.v);if(!a.length)delete UI.pending[d.pid];el.classList.toggle('on')},
+ saveSnap:()=>saveSnap(),
+ undoLast:()=>undoLast(),
+ delSnap:d=>{const s=cur();confirmBox('이 스냅을 삭제할까요? (현재 다운·위치는 바뀌지 않습니다)',()=>{s.snaps=s.snaps.filter(x=>x.id!==d.id);save();renderView()},true)},
+ endDrive:()=>endDriveModal(null),
+ endPick:(d,el)=>{UI.endSel=d.v;el.parentNode.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c===el))},
+ endSession:()=>{const s=cur();s.finished=!s.finished;save();render();toast(s.finished?'세션을 종료했습니다. 설정·백업에서 백업하세요.':'세션을 다시 열었습니다')},
+ editSit:()=>editSitModal(),
+ sitDown:(d,el)=>{el.parentNode.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c===el));el.parentNode.dataset.val=d.v},
+ pickP:d=>{const s=cur(),k=UI.unit,live=d.t==='live';const st=live?s.units[k]:UI.board.draft;if(!live)pushUndo();
+  const i=+d.i,pid=d.pid||null;const j=pid?st.lineup.indexOf(pid):-1;const old=st.lineup[i];if(j>=0&&j!==i)st.lineup[j]=old;st.lineup[i]=pid;
+  if(live){const L=FORMS[k][st.formation].L;st.history.unshift({ts:Date.now(),txt:`[기록 화면] ${L[i]}: ${pname(old)} → ${pname(pid)}${j>=0&&j!==i?` (${L[j]}와 맞교환)`:''}`});UI.board.draft=null;save()}
+  closeModal();renderView()},
+ bmode:d=>{UI.board.mode=d.v;renderView()},
+ bflip:()=>{pushUndo();const x=UI.board.draft;x.strong=x.strong==='R'?'L':'R';x.slots=x.slots.map(([a,b])=>[200-a,b]);x.strokes=x.strokes.map(s=>s.map(([a,b])=>[200-a,b]));renderView()},
+ bundo:()=>{const B=UI.board;if(B.undo.length){B.draft=B.undo.pop();renderView()}},
+ bclear:()=>{pushUndo();UI.board.draft.strokes=[];renderView()},
+ bresetPos:()=>{pushUndo();const x=UI.board.draft;x.slots=defaultSlots(UI.unit,x.formation,x.strong);renderView()},
+ bresetStart:()=>{const u=cur().units[UI.unit];if(!u.starting)return toast('저장된 선발 배치가 없습니다');pushUndo();UI.board.draft=clone(u.starting);renderView();toast('선발 배치를 불러왔습니다. 적용을 눌러 확정하세요')},
+ bauto:()=>{pushUndo();autoFill(UI.board.draft,UI.unit,rosterPlayers(cur()));renderView()},
+ bapply:()=>applyBoard(),
+ aiCopy:()=>{const s=cur();copyText(aiPrompt(s,UI.unit),'AI 질문을 복사했습니다. ChatGPT/Claude에 붙여넣으세요')},
+ csv:()=>{const s=cur();exportFile(`${s.date}_${s.name}_${UNITS[UI.unit].name}.csv`,'﻿'+csvText(s,UI.unit))},
+ csvAll:()=>{const s=cur();if(!s)return toast('기록이 없습니다');exportFile(`${s.date}_${s.name}_공수전체.csv`,'﻿'+csvText(s,null))},
+ addPlayer:()=>{const ne=$('#pName'),name=(ne&&ne.value||'').trim();if(!name){toast('이름을 입력하세요');ne&&ne.focus();return}addPlayers([{num:($('#pNum').value||'').trim(),name,pos:($('#pPos').value||'').trim().toUpperCase()}]);setTimeout(()=>{const n=$('#pNum');n&&n.focus()},50)},
+ delAllPlayers:()=>confirmBox(`선수 ${DB.players.length}명을 모두 삭제할까요? 모든 기록의 배치에서도 빠집니다. (스냅 기록 자체는 남아요)`,()=>{DB.players=[];DB.sessions.forEach(s=>{s.roster=[];['D','O'].forEach(k=>{const u=s.units[k];u.lineup=u.lineup.map(()=>null);if(u.starting)u.starting.lineup=u.starting.lineup.map(()=>null)})});UI.board.draft=null;save();render();toast('명단을 모두 삭제했습니다')},true),
+ bulkAdd:()=>{const arr=$('#pBulk').value.split('\n').map(l=>l.trim()).filter(Boolean).map(l=>{const t=l.split(/\s+/);let num='';if(/^\d+$/.test(t[0]))num=t.shift();const name=t.shift()||'';return{num,name,pos:t.join('/').toUpperCase()}}).filter(p=>p.name);if(!arr.length)return toast('형식: 번호 이름 포지션');addPlayers(arr)},
+ editPlayer:d=>{const p=P(d.id);openModal({title:'선수 수정',body:`<div class=form><label>번호<input class=txt id=ePNum value="${esc(p.num)}"></label><label>이름<input class=txt id=ePName value="${esc(p.name)}"></label><label>포지션<input class=txt id=ePPos value="${esc(p.pos)}"></label></div>`,actions:[{label:'취소'},{label:'저장',cls:'pri',fn:()=>{p.num=$('#ePNum').value.trim();p.name=$('#ePName').value.trim()||p.name;p.pos=$('#ePPos').value.trim().toUpperCase();save();setTimeout(render,0)}}]})},
+ delPlayer:d=>confirmBox(`${esc(pname(d.id))} 선수를 삭제할까요? 배치에서 빠지며, 과거 스냅의 스탯은 '알 수 없음'으로 남습니다.`,()=>{DB.players=DB.players.filter(p=>p.id!==d.id);DB.sessions.forEach(s=>{s.roster=s.roster.filter(x=>x!==d.id);['D','O'].forEach(k=>{const u=s.units[k];u.lineup=u.lineup.map(x=>x===d.id?null:x)})});UI.board.draft=null;save();render()},true),
+ expJson:()=>exportFile(`fieldboard_backup_${today()}.json`,JSON.stringify(DB),()=>{DB.lastBackup=Date.now();save()}),
+ copyJson:()=>{copyText(JSON.stringify(DB),'백업 JSON을 복사했습니다');DB.lastBackup=Date.now();save()},
+ impPaste:()=>importJson($('#impTxt').value),
+ saveSessInfo:()=>{const s=cur();s.name=$('#sName').value.trim()||s.name;s.opp=$('#sOpp').value.trim();s.date=$('#sDate').value||s.date;save();render();toast('저장했습니다')},
+ delSess:()=>{const s=cur();confirmBox(`"${esc(s.name)}" 기록을 삭제할까요? 되돌릴 수 없습니다.`,()=>{DB.sessions=DB.sessions.filter(x=>x.id!==s.id);if(SYNC.on&&SYNC.db)SYNC.db.doc('sessions/'+s.id).delete().catch(()=>{});DB.currentId=DB.sessions.length?DB.sessions[DB.sessions.length-1].id:null;UI.board.draft=null;save();UI.tab='home';render()},true)},
+ resetAll:()=>confirmBox('모든 선수와 기록을 삭제합니다. 정말 초기화할까요?',()=>{DB={v:1,players:[],sessions:[],currentId:null,lastBackup:null};UI.board.draft=null;resetForm();save();UI.tab='home';render()},true)
+};
+const CHG={
+ sess:el=>{DB.currentId=el.value;if(UI.viewer)UI.followLive=false;resetForm();save();render()},
+ quarter:el=>{cur().units[UI.unit].sit.q=el.value;save()},
+ penOn:el=>{UI.form.pen.on=el.checked;renderView()},
+ penAuto:el=>{UI.form.pen.auto=el.checked},
+ noPlay:el=>{UI.form.noPlay=el.checked},
+ ovrOn:el=>{UI.form.ovr.on=el.checked;const u=cur().units[UI.unit];UI.form.ovr.down=Math.min(4,u.sit.down);UI.form.ovr.dist=u.sit.dist;renderView()},
+ review:el=>{UI.form.review=el.checked},
+ roster:el=>{const s=cur();const id=el.dataset.id;if(el.checked){if(!s.roster.includes(id))s.roster.push(id)}else s.roster=s.roster.filter(x=>x!==id);save()},
+ bform:el=>{pushUndo();const x=UI.board.draft;x.formation=el.value;x.slots=defaultSlots(UI.unit,el.value,x.strong);renderView()},
+ bcover:el=>{pushUndo();UI.board.draft.coverage=el.value;renderView()},
+ impFile:el=>{const f=el.files&&el.files[0];if(!f)return;const r=new FileReader();r.onload=()=>importJson(r.result);r.readAsText(f)}
+};
+const INP={
+ yards:el=>{UI.form.yards=el.value===''||el.value==='-'?0:Math.round(+el.value)||0},
+ penYds:el=>{UI.form.pen.yds=+el.value||0},
+ ovrDist:el=>{UI.form.ovr.dist=+el.value||1},
+ memo:el=>{cur().units[UI.unit].memo=el.value;save()},
+ note:el=>{cur().units[UI.unit].note=el.value;save()}
+};
+const VIEW_OK=new Set(['tab','unit','resume','openSess','toggleLog','aiCopy','csv','csvAll','copyJson','expJson','viewerOn','viewerOff','viewerImport','followLive','bmode']);
+document.addEventListener('click',e=>{const t=e.target.closest('[data-act]');if(!t||t.disabled)return;const a=t.dataset.act;if(UI.viewer&&!VIEW_OK.has(a)){toast('실시간 보기는 보기 전용이에요');return}const f=ACT[a];if(f)f(t.dataset,t,e)});
+document.addEventListener('change',e=>{const t=e.target.closest('[data-chg]');if(!t)return;if(UI.viewer&&t.dataset.chg!=='sess'){toast('실시간 보기는 보기 전용이에요');renderView();return}if(CHG[t.dataset.chg])CHG[t.dataset.chg](t)});
+document.addEventListener('input',e=>{const t=e.target.closest('[data-inp]');if(t&&!UI.viewer&&INP[t.dataset.inp])INP[t.dataset.inp](t)});
+document.addEventListener('keydown',e=>{if(e.key!=='Enter'||e.isComposing)return;const id=e.target&&e.target.id;if(id==='pNum'){e.preventDefault();$('#pName').focus()}else if(id==='pName'){e.preventDefault();$('#pPos').focus()}else if(id==='pPos'){e.preventDefault();ACT.addPlayer()}});
+document.addEventListener('toggle',e=>{if(e.target.id==='det')UI.detOpen=e.target.open},true);
+
+/* ================= 동작 ================= */
+function addPlayers(arr){const s=cur();arr.forEach(p=>{const np={id:uid(),num:p.num,name:p.name,pos:p.pos};DB.players.push(np);if(s)s.roster.push(np.id)});save();render();toast(`${arr.length}명 추가`)}
+function importJson(text){
+ let d;try{d=JSON.parse(text)}catch(e){return toast('JSON 형식이 올바르지 않습니다')}
+ if(!d||!Array.isArray(d.players)||!Array.isArray(d.sessions))return toast('이 앱의 백업 파일이 아닙니다');
+ confirmBox(`선수 ${d.players.length}명, 기록 ${d.sessions.length}개를 불러옵니다. 현재 데이터는 교체됩니다.`,()=>{DB=d;if(!DB.sessions.find(s=>s.id===DB.currentId))DB.currentId=DB.sessions.length?DB.sessions[DB.sessions.length-1].id:null;UI.board.draft=null;resetForm();save();UI.tab='home';render();toast('불러오기 완료')});
+}
+function newSessionModal(){
+ const pl=DB.players.slice().sort(numSort);
+ openModal({title:'새 경기 / 훈련',wide:true,body:`<div class=form>
+  <div class=grid2><label>이름<input class=txt id=nsName placeholder="예) vs 서울 바이킹스"></label><label>유형<select class=txt id=nsType><option>경기</option><option>훈련</option><option>스크리미지</option></select></label>
+  <label>날짜<input class=txt type=date id=nsDate value="${today()}"></label><label>상대팀 (선택)<input class=txt id=nsOpp></label>
+  <label>수비 포메이션<select class=txt id=nsFD>${Object.entries(FORMS.D).map(([k,x])=>`<option value=${k}>${x.name}</option>`).join('')}</select></label>
+  <label>공격 포메이션<select class=txt id=nsFO>${Object.entries(FORMS.O).map(([k,x])=>`<option value=${k}>${x.name}</option>`).join('')}</select></label></div>
+  <div><div class=lbl>참가 선수 (${pl.length}명)</div>${pl.length?`<div class=pickgrid>${pl.map(p=>`<label class=ck style="border:1px solid var(--line);border-radius:10px;padding:8px"><input type=checkbox class=nsP value=${p.id} checked> ${p.num?'#'+esc(p.num)+' ':''}${esc(p.name)} <span class="sm muted">${esc(p.pos||'')}</span></label>`).join('')}</div>`:`<p class="sm muted">등록된 선수가 없어요. 빈 배치로 시작하고 나중에 선수 관리에서 추가해도 됩니다.</p>`}</div>
+  <p class="sm muted">포지션이 맞는 선수를 수비·공격 11명에 자동 배치합니다. 작전판에서 바꿀 수 있어요.</p></div>`,
+  actions:[{label:'취소'},{label:'기록 시작',cls:'pri',fn:()=>{
+   const name=$('#nsName').value.trim()||(($('#nsOpp').value.trim()?'vs '+$('#nsOpp').value.trim():$('#nsType').value)+' '+$('#nsDate').value);
+   const roster=[...document.querySelectorAll('.nsP')].filter(x=>x.checked).map(x=>x.value);
+   const s={id:uid(),name,type:$('#nsType').value,date:$('#nsDate').value||today(),opp:$('#nsOpp').value.trim(),roster,finished:false,created:Date.now(),units:{D:newUnit('D'),O:newUnit('O')},snaps:[],drives:[]};
+   const fd=$('#nsFD').value,fo=$('#nsFO').value;s.units.D.formation=fd;s.units.D.slots=defaultSlots('D',fd,'R');s.units.O.formation=fo;s.units.O.slots=defaultSlots('O',fo,'R');
+   const rp=DB.players.filter(p=>roster.includes(p.id));['D','O'].forEach(k=>{autoFill(s.units[k],k,rp);s.units[k].starting=pickBoard(s.units[k])});
+   DB.sessions.push(s);DB.currentId=s.id;resetForm();UI.board.draft=null;UI.tab='record';save();setTimeout(()=>{render();window.scrollTo(0,0)},0);
+  }}]});
+}
+function statModal(pid,i){
+ const k=UI.unit,U=UNITS[k],p=P(pid),u=cur().units[k],lab=FORMS[k][u.formation].L[i];const a=UI.pending[pid]||[];
+ openModal({title:`${p.num?'#'+esc(p.num)+' ':''}${esc(p.name)} · ${lab}`,body:`<p class="sm muted">이번 스냅에 해당하는 항목을 모두 선택하세요. ${k==='O'?'캐리/캐치는 이 스냅의 야드가 선수 야드로 집계됩니다.':''}</p><div class=chips>${U.stats.map(st=>`<button class="chip sm ${a.includes(st)?'on':''}" data-act=statTog data-pid=${pid} data-v="${st}">${st}</button>`).join('')}</div>`,
+  actions:[{label:'완료',cls:'pri'}],onClose:()=>renderView()});
+}
+function editSitModal(){
+ const k=UI.unit,u=cur().units[k],sit=u.sit;
+ let side='미확인',yl='';if(sit.ytg!=null){if(sit.ytg===50){side='우리';yl=50}else{const ourSide=k==='D'?sit.ytg<50:sit.ytg>50;side=ourSide?'우리':'상대';yl=ourSide?(k==='D'?sit.ytg:100-sit.ytg):(k==='D'?100-sit.ytg:sit.ytg)}}
+ openModal({title:'다운 · 위치 수정',body:`<div class=form>
+  <div><div class=lbl>다운</div><div class=chips id=sdDown data-val=${sit.down}>${[1,2,3,4].map(d=>`<button class="chip ${sit.down===d?'on':''}" data-act=sitDown data-v=${d}>${d}</button>`).join('')}</div></div>
+  <label>남은 거리 (야드)<input class=txt type=number inputmode=numeric id=sdDist value="${sit.dist}"></label>
+  <div class=grid2><label>볼 위치 진영<select class=txt id=sdSide>${['우리','상대','미확인'].map(x=>`<option ${side===x?'selected':''}>${x}</option>`).join('')}</select></label><label>야드 라인 (1~50)<input class=txt type=number inputmode=numeric id=sdYl value="${yl}"></label></div>
+  <p class="sm muted">볼 위치를 넣으면 레드존 집계와 Goal to go, 터치다운 감지가 자동으로 됩니다.</p></div>`,
+  actions:[{label:'취소'},{label:'적용',cls:'pri',fn:()=>{
+   const down=+$('#sdDown').dataset.val||1,dist=Math.max(1,+$('#sdDist').value||10),sd=$('#sdSide').value,y=clamp(+$('#sdYl').value||0,0,50);
+   let ytg=null;if(sd!=='미확인'&&y>0){const our=sd==='우리';ytg=k==='D'?(our?y:100-y):(our?100-y:y)}
+   u.sit={q:sit.q,down,dist,ytg};save();setTimeout(render,0)}}]});
+}
+function saveSnap(){
+ const s=cur();if(!s)return toast('먼저 새 기록을 만들어 주세요');
+ const k=UI.unit,u=s.units[k],f=UI.form,sit=u.sit;
+ const yards=Math.round(+f.yards||0);
+ const pen=f.pen.on?{side:f.pen.side,yds:Math.abs(+f.pen.yds||0),auto:!!f.pen.auto}:null;
+ const penGain=pen?(pen.side==='수비팀'?pen.yds:-pen.yds):0;
+ const net=(f.noPlay?0:yards)+penGain;
+ let ytg2=sit.ytg==null?null:sit.ytg-net;
+ const td=ytg2!=null&&ytg2<=0&&!f.noPlay;
+ let down,dist,fd=false;
+ if(f.ovr.on){down=+f.ovr.down;dist=Math.max(1,+f.ovr.dist||10)}
+ else if(pen&&pen.auto){down=1;dist=10;fd=true}
+ else{const d2=sit.dist-net;if(d2<=0){down=1;dist=10;fd=true}else if(f.noPlay){down=sit.down;dist=d2}else{down=sit.down+1;dist=d2}}
+ if(ytg2!=null){ytg2=clamp(ytg2,0,99);if(down===1&&ytg2>0&&ytg2<10&&!f.ovr.on)dist=ytg2}
+ const stats=[];Object.entries(UI.pending).forEach(([pid,a])=>a.forEach(st=>stats.push({pid,s:st})));
+ const snap={id:uid(),unit:k,driveNo:u.driveNo,q:sit.q,down:sit.down,dist:sit.dist,ytg:sit.ytg,play:f.play,dir:f.dir,yards:f.noPlay?0:yards,
+  passRes:f.play==='패스'?f.passRes:null,pen,noPlay:f.noPlay,review:f.review,stats,lineup:u.lineup.slice(),form:formLabel(u,k),fd:fd&&!f.noPlay,td,ts:Date.now()};
+ if(!s.drives.find(d=>d.unit===k&&d.no===u.driveNo))s.drives.push({id:uid(),unit:k,no:u.driveNo,result:null});
+ s.snaps.push(snap);
+ u.sit={q:sit.q,down:Math.min(down,4),dist,ytg:td?null:ytg2};
+ resetForm();save();render();
+ const has=x=>stats.some(t=>t.s===x);let sug=null;
+ if(td)sug=k==='D'?'터치다운 허용':'터치다운';
+ else if(snap.passRes==='INT'||has('INT'))sug='인터셉션';
+ else if(k==='D'&&has('FR'))sug='펌블 리커버';
+ else if(k==='O'&&has('펌블 로스트'))sug='펌블 로스트';
+ else if(down>4)sug='다운 턴오버';
+ if(sug)setTimeout(()=>endDriveModal(sug),150);
+ else toast(`저장 · 다음 ${sitText(u.sit)}${fd&&!f.ovr.on?' (퍼스트다운)':''}`);
+}
+function undoLast(){
+ const s=cur(),k=UI.unit,u=s.units[k];const list=s.snaps.filter(x=>x.unit===k);const last=list[list.length-1];if(!last)return;
+ confirmBox(`마지막 ${UNITS[k].name} 스냅(#${list.length}, ${last.play} ${last.dir} ${last.yards}yd)을 취소할까요? 다운·위치가 그 스냅 이전으로 돌아갑니다.`,()=>{
+  s.snaps=s.snaps.filter(x=>x.id!==last.id);
+  if(u.driveNo!==last.driveNo){s.drives=s.drives.filter(d=>!(d.unit===k&&d.no>last.driveNo));const dr=s.drives.find(d=>d.unit===k&&d.no===last.driveNo);if(dr)dr.result=null;u.driveNo=last.driveNo}
+  u.sit={q:last.q,down:last.down,dist:last.dist,ytg:last.ytg};save();render();toast('마지막 스냅을 취소했습니다')});
+}
+function endDriveModal(sug){
+ const s=cur(),k=UI.unit,U=UNITS[k],u=s.units[k];const ds=s.snaps.filter(x=>x.unit===k&&x.driveNo===u.driveNo);
+ UI.endSel=sug;
+ openModal({title:`${U.name} 드라이브 #${u.driveNo} 종료`,body:`${sug?`<div class="note warn" style="margin-bottom:12px">자동 감지: <b>${sug}</b> — 맞으면 그대로 종료하세요.</div>`:''}<p class="sm muted">${ds.length}스냅 · 합계 ${ds.filter(x=>!x.noPlay).reduce((t,x)=>t+x.yards,0)}야드</p><div class=lbl>종료 사유</div><div class=chips>${U.ends.map(e=>`<button class="chip sm ${sug===e?'on':''}" data-act=endPick data-v="${e}">${e}</button>`).join('')}</div>`,
+  actions:[{label:sug?'아직 진행 중':'취소'},{label:'드라이브 종료',cls:'pri',fn:()=>{
+   if(!UI.endSel){toast('종료 사유를 선택하세요');return false}
+   let dr=s.drives.find(d=>d.unit===k&&d.no===u.driveNo);if(!dr){dr={id:uid(),unit:k,no:u.driveNo,result:null};s.drives.push(dr)}
+   dr.result=UI.endSel;u.driveNo++;u.sit={q:u.sit.q,down:1,dist:10,ytg:null};resetForm();save();
+   setTimeout(()=>{render();toast(`드라이브 종료 · ${dr.result} · 다음은 #${u.driveNo}`)},0)}}]});
+}
+function applyBoard(){
+ const s=cur(),k=UI.unit,u=s.units[k],d=UI.board.draft;
+ const Fo=FORMS[k][u.formation],Fn=FORMS[k][d.formation],ch=[];
+ if(u.formation!==d.formation)ch.push(`포메이션 ${Fo.name} → ${Fn.name}`);
+ if(u.coverage!==d.coverage)ch.push(`${UNITS[k].coverLbl} ${u.coverage} → ${d.coverage}`);
+ if(u.strong!==d.strong)ch.push(`스트롱 ${u.strong} → ${d.strong}`);
+ d.lineup.forEach((id,i)=>{if(u.lineup[i]!==id)ch.push(`${Fn.L[i]}: ${pname(u.lineup[i])} → ${pname(id)}`)});
+ if(u.formation===d.formation&&JSON.stringify(u.slots)!==JSON.stringify(d.slots))ch.push('위치 조정');
+ if(JSON.stringify(u.strokes)!==JSON.stringify(d.strokes))ch.push('필기 변경');
+ Object.assign(u,clone(d));
+ u.history.unshift({ts:Date.now(),txt:ch.join(' · ')||'변경 없음'});
+ if(!s.snaps.some(x=>x.unit===k))u.starting=pickBoard(u);
+ UI.board.undo=[];save();render();toast('배치 적용 — 다음 스냅부터 반영됩니다');
+}
+
+render();
+</script>
+</body>
+</html>
